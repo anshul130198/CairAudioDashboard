@@ -9,7 +9,6 @@ const Header = () => {
             <a
               className="nav-link"
               data-widget="pushmenu"
-              href="#"
               role="button"
             >
               <i className="fas fa-bars" />
@@ -23,7 +22,6 @@ const Header = () => {
             <a
               className="nav-link"
               data-widget="navbar-search"
-              href="#"
               role="button"
             >
               <i className="fas fa-search" />

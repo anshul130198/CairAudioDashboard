@@ -16,7 +16,7 @@ Order status or get some Help using Nifty.</p>*/}
             {/* /.col */}
             <div className="col-sm-6">
               {/*<ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item"><a >Dashboard</a></li>
         <li class="breadcrumb-item active">Project</li>
       </ol>*/}
             </div>
@@ -47,10 +47,10 @@ Order status or get some Help using Nifty.</p>*/}
                     />
                   </figure>
                   <div className="text-center">
-                    <a href="#" className="card-link btn-primary btn">
+                    <a  className="card-link btn-primary btn">
                       Example Project
                     </a>
-                    <a href="#" className="card-link btn-success btn">
+                    <a  className="card-link btn-success btn">
                       Start Project
                     </a>
                   </div>
@@ -73,7 +73,7 @@ Order status or get some Help using Nifty.</p>*/}
                       ML pipeline for predicting housing price in boston, with
                       model training and canary rollout for serving.
                     </p>
-                    <a href="#" className="btn btn-success">
+                    <a  className="btn btn-success">
                       Example Project
                     </a>
                   </div>
@@ -91,7 +91,7 @@ Order status or get some Help using Nifty.</p>*/}
                       ML pipeline for predicting housing price in boston, with
                       model training and canary rollout for serving.
                     </p>
-                    <a href="#" className="btn btn-info">
+                    <a  className="btn btn-info">
                       Example Project
                     </a>
                   </div>
@@ -111,7 +111,7 @@ Order status or get some Help using Nifty.</p>*/}
                       ML pipeline for predicting housing price in boston, with
                       model training and canary rollout for serving.
                     </p>
-                    <a href="#" className="btn btn-purple">
+                    <a  className="btn btn-purple">
                       Example Project
                     </a>
                   </div>
@@ -129,7 +129,7 @@ Order status or get some Help using Nifty.</p>*/}
                       ML pipeline for predicting housing price in boston, with
                       model training and canary rollout for serving.
                     </p>
-                    <a href="#" className="btn btn-warning">
+                    <a  className="btn btn-warning">
                       <i className="fas fa-plus-circle" /> Import
                     </a>
                   </div>

@@ -24,7 +24,7 @@ const Sidebar = () => {
               />
             </div>
             <div className="info">
-              <a href="#" className="d-block">
+              <a  className="d-block">
                 Project Name
               </a>
             </div>
@@ -41,7 +41,7 @@ const Sidebar = () => {
               {/* Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library */}
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a  className="nav-link">
                   <i className="nav-icon fas fa-file" />
                   <p>
                     Project
@@ -58,7 +58,7 @@ const Sidebar = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a  className="nav-link">
                   <i className="nav-icon fas fa-database" />
                   <p>
                     Datasets
@@ -75,7 +75,7 @@ const Sidebar = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a  className="nav-link">
                   <i className="nav-icon fas fa-copy" />
                   <p>
                     Dashboard
@@ -92,7 +92,7 @@ const Sidebar = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a  className="nav-link">
                   <i className="nav-icon fas fa-archive" />
                   <p>
                     Containers
@@ -171,7 +171,7 @@ const Sidebar = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a  className="nav-link">
                   <i className="nav-icon fas fa-list-alt" />
                   <p>
                     Compute
@@ -250,7 +250,7 @@ const Sidebar = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a  className="nav-link">
                   <i className="nav-icon fas fa-users-cog" />
                   <p>
                     Team
@@ -329,7 +329,7 @@ const Sidebar = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a  className="nav-link">
                   <i className="nav-icon fas fa-cogs" />
                   <p>
                     Settings
