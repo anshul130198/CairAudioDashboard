@@ -1,8 +1,38 @@
 // import  from '../../../public/dist/img/project-icon.png' ;
 
+import { useState } from "react";
+import StartProjectModal from "../../Modals/StartProjectModal";
+import Modal from "../../Modals/Modal";
+import { useNavigate } from "react-router-dom";
+// import { Modal } from "bootstrap";
+
 const Dashboard = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const redirectToNewProject = (event) => {
+    setIsModalOpen(false);
+    console.log(event)
+    navigate(`/project/${event}`)
+  }
+
   return (
     <div className="content-wrapper">
+         {isModalOpen && (
+                      <Modal isOpen={isModalOpen}
+                             onClose={closeModal}>
+                        <StartProjectModal onClose={closeModal} onContinue={redirectToNewProject}/>
+                      </Modal>
+                    )}
       {/* Content Header (Page header) */}
       <div className="content-header">
         <div className="container-fluid">
@@ -40,19 +70,29 @@ Order status or get some Help using Nifty.</p>*/}
                   </p>
                   <figure className="img-figure">
                     <img
-                    //   src="../../../public/dist/img/project-icon.png"
-                      src={process.env.PUBLIC_URL + 'dist/img/project-icon.png'}
+                      //   src="../../../public/dist/img/project-icon.png"
+                      src={process.env.PUBLIC_URL + "dist/img/project-icon.png"}
                       className="img-responsive"
                       alt=""
                     />
                   </figure>
                   <div className="text-center">
-                    <a  className="card-link btn-primary btn">
-                      Example Project
-                    </a>
-                    <a  className="card-link btn-success btn">
+                    <a className="card-link btn-primary btn">Example Project</a>
+                    <a
+                      className="card-link btn-success btn"
+                      onClick={openModal}
+                    >
                       Start Project
                     </a>
+                 
+                    {/* {isModalOpen &&
+                      createPortal(
+                        <StartProjectModal
+                          showModal={isModalOpen}
+                          closeModal={closeModal}
+                        />,
+                        document.getElementById("modal-root")
+                      )} */}
                   </div>
                 </div>
               </div>
@@ -73,9 +113,7 @@ Order status or get some Help using Nifty.</p>*/}
                       ML pipeline for predicting housing price in boston, with
                       model training and canary rollout for serving.
                     </p>
-                    <a  className="btn btn-success">
-                      Example Project
-                    </a>
+                    <a className="btn btn-success">Example Project</a>
                   </div>
                 </div>
                 <div className="col-6">
@@ -91,9 +129,7 @@ Order status or get some Help using Nifty.</p>*/}
                       ML pipeline for predicting housing price in boston, with
                       model training and canary rollout for serving.
                     </p>
-                    <a  className="btn btn-info">
-                      Example Project
-                    </a>
+                    <a className="btn btn-info">Example Project</a>
                   </div>
                 </div>
               </div>
@@ -111,9 +147,7 @@ Order status or get some Help using Nifty.</p>*/}
                       ML pipeline for predicting housing price in boston, with
                       model training and canary rollout for serving.
                     </p>
-                    <a  className="btn btn-purple">
-                      Example Project
-                    </a>
+                    <a className="btn btn-purple">Example Project</a>
                   </div>
                 </div>
                 <div className="col-6">
@@ -129,7 +163,7 @@ Order status or get some Help using Nifty.</p>*/}
                       ML pipeline for predicting housing price in boston, with
                       model training and canary rollout for serving.
                     </p>
-                    <a  className="btn btn-warning">
+                    <a className="btn btn-warning">
                       <i className="fas fa-plus-circle" /> Import
                     </a>
                   </div>

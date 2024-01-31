@@ -1,5 +1,7 @@
 export const AppRoutes = {
     HOME: "/",
     LOGIN: "/login",
-    DASHBOARD : "/dashboard"
+    DASHBOARD : "/dashboard",
+    PROJECT_PAGE: "/project/:name",
+    FILE: "/file"
   };

@@ -5,6 +5,8 @@ import Layout from "./Components/Layout/Layout";
 import Dashboard from "./Components/Screens/Dashboard/Dashboard";
 import Login from "./Components/Screens/Login/Login";
 import AuthGuard from "./Components/AuthGuard/AuthGuard";
+import NewProject from "./Components/Screens/NewProject/NewProject";
+import File from "./Components/Screens/File/File";
 
 const appRouter = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const appRouter = createBrowserRouter([
       {
         path: AppRoutes.DASHBOARD,
         element: <Dashboard />,
+      },
+      {
+        path: AppRoutes.PROJECT_PAGE,
+        element: <NewProject />,
+      },
+      {
+        path: AppRoutes.FILE,
+        element: <File />,
       },
     ],
   },
