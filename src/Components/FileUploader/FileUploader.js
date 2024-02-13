@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FileUploader = () => {
+const FileUploader = ({ onUpload }) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -23,6 +23,7 @@ const FileUploader = () => {
     console.log("Uploading file:", selectedFile);
     // Reset the selected file after uploading
     setSelectedFile(null);
+    onUpload(true);
   };
 
   const handleReset = () => {
@@ -36,7 +37,7 @@ const FileUploader = () => {
     }
 
     const { type } = selectedFile;
-
+    console.log(selectedFile);
     if (type.startsWith("image/")) {
       return (
         <div>
@@ -50,25 +51,36 @@ const FileUploader = () => {
               margin: "10px 0",
             }}
           />
-          <p>{`Selected File: ${selectedFile.name}`}</p>
+          <p>{selectedFile.name}</p>
         </div>
       );
     } else {
-      return <p>{`Selected File: ${selectedFile.name}`}</p>;
+      return (
+        <>
+          <diV
+            style={{
+              width: "100px",
+              height: "100px",
+              background: "lightgrey",
+              borderRadius: "5px",
+            }}
+          ></diV>
+          <p>{selectedFile?.name}</p>
+        </>
+      );
     }
   };
 
   return (
-    <div>
-      <h4>Upload file</h4>
+    <div className="drag-drop">
+      {/* <h4>Upload file</h4> */}
       <label
         onDrop={handleDrop}
         onDragOver={handleDragOver}
-        className="drag-drop"
         htmlFor="fileInput"
       >
         <i className="fas fa-upload" />
-        <p>Drag &amp; Drop or Click</p>
+        <p>Drag & Drop</p>
         <input
           id="fileInput"
           type="file"
@@ -76,8 +88,14 @@ const FileUploader = () => {
           style={{ display: "none" }}
         />
       </label>
-      <div style={{ marginTop: "20px" }}>
-        <strong>File Preview:</strong>
+      <div
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         {renderPreview()}
       </div>
       <div style={{ marginTop: "20px" }}>

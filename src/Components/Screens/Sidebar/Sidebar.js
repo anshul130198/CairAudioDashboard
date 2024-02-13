@@ -5,10 +5,9 @@ const Sidebar = () => {
   const user2 = require("../../../Assets/img/user2-160x160.jpg");
   console.log("sidebar called");
   return (
-    // <div>
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
-      <Link to={"/dashboard"} className="brand-link">
+      <Link to={"/project/start-project"} className="brand-link">
         <img
           // src="public/dist/img/AdminLTELogo.png"
           src={AdminLTELogo}
@@ -48,76 +47,100 @@ const Sidebar = () => {
                   <i className="fas fa-angle-left right" />
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a
-                    href="pages/layout/top-nav.html"
-                    class="nav-link"
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                  <Link
+                    to={"/project/start-project"}
+                    className="nav-link"
                     data-toggle="modal"
                     data-target="#start-project"
                   >
-                    <i class="far fa-circle nav-icon"></i>
+                    <i className="far fa-circle nav-icon"></i>
                     <p>Start Project</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/project/addFileToProject"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>File</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/project/workspace"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Workspace</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/project/experiment"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Experiments</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="pages/layout/top-nav.html" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Flows</p>
                   </a>
                 </li>
+                <li className="nav-item">
+                  <Link to={"/project/serving"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Serving</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="pages/layout/top-nav.html" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Apps</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/project/setting"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Settings</p>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a className="nav-link">
+                <i class="nav-icon fas fa-database"></i>
+                <p>
+                  Datasets
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <Link to={"/file"} class="nav-link">
+                  <Link to={"/data-set/general"} class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>File</p>
+                    <p>General</p>
                   </Link>
                 </li>
                 <li class="nav-item">
                   <a href="pages/layout/top-nav.html" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Workspace</p>
+                    <p>Queries</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
+                  <Link to={"/data-set/commit"} class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Experiments</p>
-                  </a>
+                    <p>Commits</p>
+                  </Link>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
+                  <Link to={"/data-set/info"} class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Flows</p>
-                  </a>
+                    <p>Info</p>
+                  </Link>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Serving</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Apps</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
+                  <Link to={"/data-set/setting"} class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Settings</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link">
-                <i className="nav-icon fas fa-database" />
-                <p>
-                  Datasets
-                  <i className="fas fa-angle-left right" />
-                </p>
-              </a>
-              <ul className="nav nav-treeview">
-                <li className="nav-item">
-                  <a href="pages/layout/top-nav.html" className="nav-link">
-                    <i className="far fa-circle nav-icon" />
-                    <p>Top Navigation</p>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -432,11 +455,8 @@ const Sidebar = () => {
             </li>
           </ul>
         </nav>
-        {/* /.sidebar-menu */}
       </div>
-      {/* /.sidebar */}
     </aside>
-    // </div>
   );
 };
 

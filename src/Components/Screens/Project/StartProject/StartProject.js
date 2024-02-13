@@ -1,12 +1,12 @@
 // import  from '../../../public/dist/img/project-icon.png' ;
 
 import { useState } from "react";
-import StartProjectModal from "../../Modals/StartProjectModal";
-import Modal from "../../Modals/Modal";
+import StartProjectModal from "../../../Modals/StartProjectModal";
+import Modal from "../../../Modals/Modal";
 import { useNavigate } from "react-router-dom";
 // import { Modal } from "bootstrap";
 
-const Dashboard = () => {
+const StartProject = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -181,4 +181,4 @@ Order status or get some Help using Nifty.</p>*/}
   );
 };
 
-export default Dashboard;
+export default StartProject;

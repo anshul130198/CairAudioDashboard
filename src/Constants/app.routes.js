@@ -1,7 +1,18 @@
 export const AppRoutes = {
-    HOME: "/",
-    LOGIN: "/login",
-    DASHBOARD : "/dashboard",
-    PROJECT_PAGE: "/project/:name",
-    FILE: "/file"
-  };
+  HOME: "/",
+  PROJECT: "/project",
+  DATASET: "/data-set",
+  LOGIN: "/login",
+  STARTPROJECT: "start-project",
+  PROJECT_PAGE: "project/:name",
+  ADDFILETOPROJECT: "addFileToProject",
+  VIEWANDADDNEWFILETOPROJECT: "viewAndAddFileToProject",
+  WORKSPACE: "workspace",
+  PROGRESS: "workspace/progress",
+  EXPERIMENT: "experiment",
+  SETTING: "setting",
+  SERVING: "serving",
+  GENERAL: "general",
+  INFO: "info",
+  COMMIT: "commit",
+};

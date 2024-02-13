@@ -1,8 +1,42 @@
+import { useState } from "react";
 import FileUploader from "../../FileUploader/FileUploader";
+import { useNavigate } from "react-router-dom";
+import Modal from "../../Modals/Modal";
+import CommitMsgModal from "../../Modals/CommitMsgModal";
 
-const File = () => {
+const AddFileToProject = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const onUpload = (data) => {
+    console.log("onUpload clicked");
+    if (data) {
+      openModal(true);
+    }
+  };
+
+  const redirectToViewFile = (event) => {
+    setIsModalOpen(false);
+    console.log(event);
+    navigate('/viewAndAddFileToProject');
+  };
+
   return (
     <div className="content-wrapper">
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <CommitMsgModal onClose={closeModal} onSync={redirectToViewFile} />
+        </Modal>
+      )}
       {/* Content Header (Page header) */}
       <div className="content-header">
         <div className="container-fluid">
@@ -44,22 +78,22 @@ Order status or get some Help using Nifty.</p>*/}
           <div className="row">
             <div className="text-center mb-4 col-xl-3">
               <div className="minh445">
-                <a href="javascript:void(0)" className="btn btn-danger">
+                <a className="btn btn-danger">
                   New Directory
                 </a>
-                <a href="javascript:void(0)" className="btn btn-success">
+                <a className="btn btn-success">
                   New File
                 </a>
               </div>
             </div>
             <div className="text-center mb-4 col-xl-4">
               <div className="card minh445">
-                {/* <h4>Upload file</h4> */}
-                <div className="drag-drop">
-                  {/* <i className="fas fa-upload" /> */}
-                  {/* <p>Drag &amp; Drop</p> */}
-                  <FileUploader/>
-                </div>
+                <h4>Upload file</h4>
+                {/* <div className="drag-drop">
+              <i className="fas fa-upload" />
+              <p>Drag &amp; Drop</p> */}
+                <FileUploader onUpload={onUpload} />
+                {/* </div> */}
               </div>
             </div>
             <div className="text-center mb-4 col-xl-5">
@@ -77,4 +111,4 @@ Order status or get some Help using Nifty.</p>*/}
   );
 };
 
-export default File;
+export default AddFileToProject;

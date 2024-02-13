@@ -1,5 +1,6 @@
 
 .min200{min-height: 200px;}
+.minh418{min-height: 418px;}
 .min50{min-height: 50px;}
 .br10{border-radius: 10px;}
 .padt20{padding-top: 20px;}
@@ -122,5 +123,15 @@ border-color: #25476a;}
 
 .minh445 .main-content{min-height: 390px; display: flex; justify-content: center; align-items: center;}
 
+.drag-drop{border:2px dashed #ccc; margin: 20px; min-height: 200px; background-color: #f2f2f2; display: flex; justify-content: center; align-items: center; flex-direction: column;}
+.drag-drop i{font-size: 32px;}
 
+.commit-stip{background: #f2f2f2; border: 1px solid #ccc; margin: 20px 0px; padding: 0px 5px;}
 
+.progressbar ul{display: flex; list-style: none; justify-content: center; align-items: center; margin: 0; padding: 0; position: relative;}
+.progressbar ul::after{content: ''; position: absolute; width: 100%; height: 3px; background: #ccc; left: 0; right: 0;transform: scale(0.6); bottom: 53px;}
+.progressbar ul li{width: 15%; text-align: center; color: #000;}
+.progressbar ul li em{background: #ccc; width: 30px; height: 30px; line-height: 30px; border-radius: 50%; position: relative; z-index: 10;}
+.progressbar ul li p{color: #fff;}
+
+.menu-center{display: inline-block; margin: auto; margin-bottom: 30px;}
