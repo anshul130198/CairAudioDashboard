@@ -135,3 +135,7 @@ border-color: #25476a;}
 .progressbar ul li p{color: #fff;}
 
 .menu-center{display: inline-block; margin: auto; margin-bottom: 30px;}
+
+.filter-tab{display: flex; justify-content: space-between;}
+.filter-tab li{list-style: none;}
+

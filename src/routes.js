@@ -2,17 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./Constants/app.routes";
 import Redirect from "./Components/Redirect/Redirect";
 import Layout from "./Components/Layout/Layout";
-import Dashboard from "./Components/Screens/Project/StartProject/StartProject";
 import Login from "./Components/Screens/Login/Login";
 import AuthGuard from "./Components/AuthGuard/AuthGuard";
-import NewProject from "./Components/Screens/NewProject/NewProject";
-import AddFileToProject from "./Components/Screens/File/AddFileToProject";
+import NewProject from "./Components/Screens/Project/NewProject/NewProject";
+import AddFileToProject from "./Components/Screens/Project/File/AddFileToProject";
 import ViewOrAddNewFile from "./Components/Screens/Project/File/ViewOrAddNewFile";
 import Workspace from "./Components/Screens/Project/Workspace/Workspace";
-import ProgressBar from "./Components/Screens/Project/Workspace/ProgressBar";
-import Experiment from "./Components/Screens/Project/Experiment/Experiment";
-import Setting from "./Components/Screens/Project/Setting/Setting";
-import Serving from "./Components/Screens/Project/Serving/Serving";
 import StartProject from "./Components/Screens/Project/StartProject/StartProject";
 import Project from "./Components/Screens/Project/Project";
 import Dataset from "./Components/Screens/Datasets/Dataset";
@@ -20,6 +15,13 @@ import General from "./Components/Screens/Datasets/General/General";
 import DatasetSetting from "./Components/Screens/Datasets/DatasetSetting/DatasetSetting";
 import Info from "./Components/Screens/Datasets/Info/Info";
 import Commit from "./Components/Screens/Datasets/Commits/Commit";
+import ProgressBar from "./Components/Screens/Project/Workspace/ProgressBar";
+import Experiment from "./Components/Screens/Project/Experiment/Experiment";
+import Setting from "./Components/Screens/Project/Setting/Setting";
+import Serving from "./Components/Screens/Project/Serving/Serving";
+import Container from "./Components/Screens/Containers/Container";
+import Registry from "./Components/Screens/Containers/Registry/Registry";
+import BuildImg from "./Components/Screens/Containers/BuildImg/BuildImg";
 
 const appRouter = createBrowserRouter([
   {
@@ -90,12 +92,26 @@ const appRouter = createBrowserRouter([
           },
           {
             path: AppRoutes.INFO,
-            element: <Info/>
+            element: <Info />,
           },
           {
             path: AppRoutes.COMMIT,
-            element: <Commit/>
-          }
+            element: <Commit />,
+          },
+        ],
+      },
+      {
+        path: AppRoutes.CONTAINER,
+        element: <Container />,
+        children: [
+          {
+            path: AppRoutes.REGISTRY,
+            element: <Registry />,
+          },
+          {
+            path: AppRoutes.BUILDIMG,
+            element: <BuildImg />,
+          },
         ],
       },
     ],

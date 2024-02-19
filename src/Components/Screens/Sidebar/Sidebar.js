@@ -162,77 +162,10 @@ const Sidebar = () => {
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link">
+              <Link to={"/container/registry"} className="nav-link">
                 <i className="nav-icon fas fa-archive" />
-                <p>
-                  Containers
-                  <i className="fas fa-angle-left right" />
-                </p>
-              </a>
-              <ul className="nav nav-treeview">
-                <li className="nav-item">
-                  <a href="pages/layout/top-nav.html" className="nav-link">
-                    <i className="far fa-circle nav-icon" />
-                    <p>Top Navigation</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    href="pages/layout/top-nav-sidebar.html"
-                    className="nav-link"
-                  >
-                    <i className="far fa-circle nav-icon" />
-                    <p>Top Navigation + Sidebar</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="pages/layout/boxed.html" className="nav-link">
-                    <i className="far fa-circle nav-icon" />
-                    <p>Boxed</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    href="pages/layout/fixed-sidebar.html"
-                    className="nav-link"
-                  >
-                    <i className="far fa-circle nav-icon" />
-                    <p>Fixed Sidebar</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    href="pages/layout/fixed-sidebar-custom.html"
-                    className="nav-link"
-                  >
-                    <i className="far fa-circle nav-icon" />
-                    <p>
-                      Fixed Sidebar <small>+ Custom Area</small>
-                    </p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="pages/layout/fixed-topnav.html" className="nav-link">
-                    <i className="far fa-circle nav-icon" />
-                    <p>Fixed Navbar</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="pages/layout/fixed-footer.html" className="nav-link">
-                    <i className="far fa-circle nav-icon" />
-                    <p>Fixed Footer</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    href="pages/layout/collapsed-sidebar.html"
-                    className="nav-link"
-                  >
-                    <i className="far fa-circle nav-icon" />
-                    <p>Collapsed Sidebar</p>
-                  </a>
-                </li>
-              </ul>
+                <p>Containers</p>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link">

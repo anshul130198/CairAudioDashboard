@@ -1,8 +1,8 @@
 import { useState } from "react";
-import FileUploader from "../../FileUploader/FileUploader";
 import { useNavigate } from "react-router-dom";
-import Modal from "../../Modals/Modal";
-import CommitMsgModal from "../../Modals/CommitMsgModal";
+import Modal from "../../../Modals/Modal";
+import CommitMsgModal from "../../../Modals/CommitMsgModal";
+import FileUploader from "../../../FileUploader/FileUploader";
 
 const AddFileToProject = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

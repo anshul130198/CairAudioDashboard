@@ -2,9 +2,10 @@ export const AppRoutes = {
   HOME: "/",
   PROJECT: "/project",
   DATASET: "/data-set",
+  CONTAINER: "/container",
   LOGIN: "/login",
   STARTPROJECT: "start-project",
-  PROJECT_PAGE: "project/:name",
+  PROJECT_PAGE: ":name",
   ADDFILETOPROJECT: "addFileToProject",
   VIEWANDADDNEWFILETOPROJECT: "viewAndAddFileToProject",
   WORKSPACE: "workspace",
@@ -15,4 +16,6 @@ export const AppRoutes = {
   GENERAL: "general",
   INFO: "info",
   COMMIT: "commit",
+  REGISTRY: "registry",
+  BUILDIMG: "build-img",
 };
