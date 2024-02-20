@@ -27,7 +27,7 @@ const AddFileToProject = () => {
   const redirectToViewFile = (event) => {
     setIsModalOpen(false);
     console.log(event);
-    navigate('/viewAndAddFileToProject');
+    navigate('/project/viewAndAddFileToProject');
   };
 
   return (

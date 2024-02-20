@@ -20,7 +20,7 @@ const Login = () => {
         dispatch(loggedIn({email: username, token: Token}))
         setUsername("");
         setPassword("");
-        navigate('/dashboard')
+        navigate('/project/start-project')
       }
     });
   };
