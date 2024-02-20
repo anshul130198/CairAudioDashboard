@@ -177,25 +177,22 @@ const Sidebar = () => {
               </a>
               <ul className="nav nav-treeview">
                 <li className="nav-item">
-                  <a href="pages/layout/top-nav.html" className="nav-link">
+                  <Link to={"/compute/template"} className="nav-link">
                     <i className="far fa-circle nav-icon" />
-                    <p>Top Navigation</p>
-                  </a>
+                    <p>Templates</p>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="pages/layout/top-nav-sidebar.html"
-                    className="nav-link"
-                  >
+                  <Link to={"/compute/resource"} className="nav-link">
                     <i className="far fa-circle nav-icon" />
-                    <p>Top Navigation + Sidebar</p>
-                  </a>
+                    <p>Resources</p>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="pages/layout/boxed.html" className="nav-link">
+                  <Link to={"/compute/storage"} className="nav-link">
                     <i className="far fa-circle nav-icon" />
-                    <p>Boxed</p>
-                  </a>
+                    <p>Storage</p>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <a
@@ -203,7 +200,7 @@ const Sidebar = () => {
                     className="nav-link"
                   >
                     <i className="far fa-circle nav-icon" />
-                    <p>Fixed Sidebar</p>
+                    <p>Volumes</p>
                   </a>
                 </li>
                 <li className="nav-item">
@@ -212,34 +209,12 @@ const Sidebar = () => {
                     className="nav-link"
                   >
                     <i className="far fa-circle nav-icon" />
-                    <p>
-                      Fixed Sidebar <small>+ Custom Area</small>
-                    </p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="pages/layout/fixed-topnav.html" className="nav-link">
-                    <i className="far fa-circle nav-icon" />
-                    <p>Fixed Navbar</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="pages/layout/fixed-footer.html" className="nav-link">
-                    <i className="far fa-circle nav-icon" />
-                    <p>Fixed Footer</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    href="pages/layout/collapsed-sidebar.html"
-                    className="nav-link"
-                  >
-                    <i className="far fa-circle nav-icon" />
-                    <p>Collapsed Sidebar</p>
+                    <p>Queues</p>
                   </a>
                 </li>
               </ul>
             </li>
+
             <li className="nav-item">
               <a className="nav-link">
                 <i className="nav-icon fas fa-users-cog" />

@@ -22,6 +22,11 @@ import Serving from "./Components/Screens/Project/Serving/Serving";
 import Container from "./Components/Screens/Containers/Container";
 import Registry from "./Components/Screens/Containers/Registry/Registry";
 import BuildImg from "./Components/Screens/Containers/BuildImg/BuildImg";
+import Compute from "./Components/Screens/Compute/Compute";
+import Template from "./Components/Screens/Compute/Template/Template";
+import Resource from "./Components/Screens/Compute/Resource/Resource";
+import Storage from "./Components/Screens/Compute/Storage/Storage";
+import AddNewTemplate from "./Components/Screens/Compute/Template/AddNewTemplate";
 
 const appRouter = createBrowserRouter([
   {
@@ -111,6 +116,28 @@ const appRouter = createBrowserRouter([
           {
             path: AppRoutes.BUILDIMG,
             element: <BuildImg />,
+          },
+        ],
+      },
+      {
+        path: AppRoutes.COMPUTE,
+        element: <Compute />,
+        children: [
+          {
+            path: AppRoutes.TEMPLATE,
+            element: <Template />,
+          },
+          {
+            path: AppRoutes.ADD_NEW_TEMPLATE,
+            element: <AddNewTemplate />,
+          },
+          {
+            path: AppRoutes.RESOURCE,
+            element: <Resource />,
+          },
+          {
+            path: AppRoutes.STORAGE,
+            element: <Storage />,
           },
         ],
       },

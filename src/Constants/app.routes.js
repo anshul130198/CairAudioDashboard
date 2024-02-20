@@ -3,6 +3,7 @@ export const AppRoutes = {
   PROJECT: "/project",
   DATASET: "/data-set",
   CONTAINER: "/container",
+  COMPUTE: "/compute",
   LOGIN: "/login",
   STARTPROJECT: "start-project",
   PROJECT_PAGE: ":name",
@@ -18,4 +19,8 @@ export const AppRoutes = {
   COMMIT: "commit",
   REGISTRY: "registry",
   BUILDIMG: "build-img",
+  TEMPLATE: "template",
+  RESOURCE: "resource",
+  STORAGE: "storage",
+  ADD_NEW_TEMPLATE: "add-new-template"
 };
