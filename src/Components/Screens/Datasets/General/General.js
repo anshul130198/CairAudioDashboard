@@ -76,7 +76,7 @@ const General = () => {
             <div className="text-center mb-4 col-xl-7">
               <div className="card minh418">
                 <div className="card-body">
-                  <h4>Get Started with cnvrg CLI</h4>
+                  <h4>Get Started with CLI</h4>
                   <p>
                     Add file to this section or simply run them with he cnrg
                     unitity

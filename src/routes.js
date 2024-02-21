@@ -43,7 +43,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: AppRoutes.PROJECT,
-        element: <Project />,
+        element: <AuthGuard><Project /></AuthGuard>,
         children: [
           {
             path: AppRoutes.STARTPROJECT,

@@ -98,7 +98,7 @@ Order status or get some Help using Nifty.</p>*/}
             </div>
             <div className="text-center mb-4 col-xl-5">
               <div className="card minh445">
-                <h4>Get Started with cnvrg CL1</h4>
+                <h4>Get Started with CL1</h4>
               </div>
             </div>
           </div>
