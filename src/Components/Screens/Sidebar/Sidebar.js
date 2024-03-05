@@ -1,9 +1,44 @@
 import { Link } from "react-router-dom";
+import Button from "../../Button/Button";
+import { logOut } from "../../../utils/userSlice";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { loadTree, loadTreeview, ngOnInit } from "../../../Helper/load";
 
 const Sidebar = () => {
+
   const AdminLTELogo = require("../../../Assets/img/AdminLTELogo.png");
   const user2 = require("../../../Assets/img/user2-160x160.jpg");
   console.log("sidebar called");
+  const dispatch = useDispatch();
+  
+  const handleLogout = () => {
+  console.log("SKSKSKSKSSKS");
+  dispatch(logOut({}))
+  };
+
+useEffect(() => {
+  // const trees = window.$('[data-widget="treeview"]');
+  // trees.Treeview('init');
+  // const $ = window.$;
+  // $(document).ready(() => {
+  //   const trees= $('[data-widget="tree"]');
+  //   trees.tree();
+  // });
+  // ngOnInit();
+//   $('[data-widget="treeview"]').each(function () {
+//     adminlte.Treeview._jQueryInterface.call($(this), "init");
+// });
+  }, []);
+
+  useEffect(() => {
+    //  loadTree();
+    loadTreeview();
+    }, []);
+  // useEffect(() => {
+  //   const trees = window.$('[data-widget="treeview"]');
+  //   trees.Treeview('init');
+  //   }, []);
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
@@ -37,7 +72,7 @@ const Sidebar = () => {
             role="menu"
             data-accordion="false"
           >
-            {/* Add icons to the links using the .nav-icon class
+            {/* Add icons to the links using the .nav-icon className
          with font-awesome or any other icon font library */}
             <li className="nav-item">
               <a className="nav-link">
@@ -77,24 +112,24 @@ const Sidebar = () => {
                     <p>Experiments</p>
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a href="pages/layout/top-nav.html" className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
                     <p>Flows</p>
                   </a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link to={"/project/serving"} className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
                     <p>Serving</p>
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a href="pages/layout/top-nav.html" className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
                     <p>Apps</p>
                   </a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link to={"/project/setting"} className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
@@ -103,48 +138,48 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a className="nav-link">
-                <i class="nav-icon fas fa-database"></i>
+                <i className="nav-icon fas fa-database"></i>
                 <p>
                   Datasets
-                  <i class="fas fa-angle-left right"></i>
+                  <i className="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <Link to={"/data-set/general"} class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                  <Link to={"/data-set/general"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
                     <p>General</p>
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                {/* <li className="nav-item">
+                  <a href="pages/layout/top-nav.html" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
                     <p>Queries</p>
                   </a>
-                </li>
-                <li class="nav-item">
-                  <Link to={"/data-set/commit"} class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                </li> */}
+                <li className="nav-item">
+                  <Link to={"/data-set/commit"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
                     <p>Commits</p>
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link to={"/data-set/info"} class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                <li className="nav-item">
+                  <Link to={"/data-set/info"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
                     <p>Info</p>
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link to={"/data-set/setting"} class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                <li className="nav-item">
+                  <Link to={"/data-set/setting"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
                     <p>Settings</p>
                   </Link>
                 </li>
               </ul>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link">
                 <i className="nav-icon fas fa-copy" />
                 <p>
@@ -160,7 +195,7 @@ const Sidebar = () => {
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link to={"/container/registry"} className="nav-link">
                 <i className="nav-icon fas fa-archive" />
@@ -194,7 +229,7 @@ const Sidebar = () => {
                     <p>Storage</p>
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a
                     href="pages/layout/fixed-sidebar.html"
                     className="nav-link"
@@ -202,20 +237,11 @@ const Sidebar = () => {
                     <i className="far fa-circle nav-icon" />
                     <p>Volumes</p>
                   </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    href="pages/layout/fixed-sidebar-custom.html"
-                    className="nav-link"
-                  >
-                    <i className="far fa-circle nav-icon" />
-                    <p>Queues</p>
-                  </a>
-                </li>
+                </li> */}
               </ul>
             </li>
 
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link">
                 <i className="nav-icon fas fa-users-cog" />
                 <p>
@@ -287,8 +313,8 @@ const Sidebar = () => {
                   </a>
                 </li>
               </ul>
-            </li>
-            <li className="nav-item">
+            </li> */}
+            {/* <li className="nav-item">
               <a className="nav-link">
                 <i className="nav-icon fas fa-cogs" />
                 <p>
@@ -360,10 +386,14 @@ const Sidebar = () => {
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
+      <Button
+      buttonText = {"Logout"}
+      onClick={handleLogout}
+      />
     </aside>
   );
 };

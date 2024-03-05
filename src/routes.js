@@ -38,7 +38,7 @@ const appRouter = createBrowserRouter([
     element: (
       <AuthGuard>
         <Layout />
-      </AuthGuard>
+      </AuthGuard>  
     ),
     children: [
       {
@@ -85,7 +85,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: AppRoutes.DATASET,
-        element: <Dataset />,
+        element:  <AuthGuard><Dataset /></AuthGuard> ,
         children: [
           {
             path: AppRoutes.GENERAL,
@@ -107,7 +107,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: AppRoutes.CONTAINER,
-        element: <Container />,
+        element: <AuthGuard><Container /></AuthGuard>,
         children: [
           {
             path: AppRoutes.REGISTRY,

@@ -3,14 +3,22 @@ import Header from "../Screens/Header/Header";
 import Sidebar from "../Screens/Sidebar/Sidebar";
 import Footer from "../Screens/Footer/Footer";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Layout = () => {
+  const token =   useSelector((state) => state.user.userToken);
+
   return (
     <>
-      <Header />
-      <Sidebar />
-      <Outlet />
-      <Footer />
+    {token?(
+    <>
+        <Header />
+       <Sidebar />
+       <Outlet />
+       <Footer />
+    </>
+    ):(null)}
+     
     </>
   );
 };
