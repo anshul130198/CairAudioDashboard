@@ -4,6 +4,7 @@ export const AppRoutes = {
   DATASET: "/data-set",
   CONTAINER: "/container",
   COMPUTE: "/compute",
+  TEAM: "/team",
   LOGIN: "/login",
   STARTPROJECT: "start-project",
   PROJECT_PAGE: ":name",
@@ -22,5 +23,6 @@ export const AppRoutes = {
   TEMPLATE: "template",
   RESOURCE: "resource",
   STORAGE: "storage",
-  ADD_NEW_TEMPLATE: "add-new-template"
+  ADD_NEW_TEMPLATE: "add-new-template",
+  ALL_TEAMS: "all-teams"
 };

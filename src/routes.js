@@ -27,6 +27,9 @@ import Template from "./Components/Screens/Compute/Template/Template";
 import Resource from "./Components/Screens/Compute/Resource/Resource";
 import Storage from "./Components/Screens/Compute/Storage/Storage";
 import AddNewTemplate from "./Components/Screens/Compute/Template/AddNewTemplate";
+import Team from "./Components/Screens/Team/Team";
+import AllTeams from "./Components/Screens/Team/AllTeams/AllTeams";
+import Error from "./Components/Screens/Error/Error";
 
 const appRouter = createBrowserRouter([
   {
@@ -40,10 +43,12 @@ const appRouter = createBrowserRouter([
         <Layout />
       </AuthGuard>
     ),
+    errorElement: <Error />,
     children: [
       {
         path: AppRoutes.PROJECT,
         element: <AuthGuard><Project /></AuthGuard>,
+        errorElement: <Error />,
         children: [
           {
             path: AppRoutes.STARTPROJECT,
@@ -85,7 +90,8 @@ const appRouter = createBrowserRouter([
       },
       {
         path: AppRoutes.DATASET,
-        element: <Dataset />,
+        element: <AuthGuard><Dataset /></AuthGuard>,
+        errorElement: <Error />,
         children: [
           {
             path: AppRoutes.GENERAL,
@@ -107,7 +113,8 @@ const appRouter = createBrowserRouter([
       },
       {
         path: AppRoutes.CONTAINER,
-        element: <Container />,
+        element: <AuthGuard><Container /></AuthGuard>,
+        errorElement: <Error />,
         children: [
           {
             path: AppRoutes.REGISTRY,
@@ -121,7 +128,8 @@ const appRouter = createBrowserRouter([
       },
       {
         path: AppRoutes.COMPUTE,
-        element: <Compute />,
+        element: <AuthGuard><Compute /></AuthGuard>,
+        errorElement: <Error />,
         children: [
           {
             path: AppRoutes.TEMPLATE,
@@ -141,11 +149,23 @@ const appRouter = createBrowserRouter([
           },
         ],
       },
+      {
+        path: AppRoutes.TEAM,
+        element: <AuthGuard><Team /></AuthGuard>,
+        errorElement: <Error />,
+        children: [
+          {
+            path: AppRoutes.ALL_TEAMS,
+            element: <AllTeams />
+          }
+        ]
+      }
     ],
   },
   {
     path: AppRoutes.LOGIN,
     element: <Login />,
+    errorElement: <Error />
   },
 ]);
 
