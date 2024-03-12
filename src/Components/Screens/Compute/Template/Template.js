@@ -1,11 +1,33 @@
 import { useNavigate } from "react-router-dom";
+import TableComponent from "../../../TableComponent";
+import { useState } from "react";
 
 const Template = () => {
   const navigate = useNavigate();
-
+  const [tableData, setTableData] = useState([
+    { active: 'Active', size: 'Small', type: 'Default', configuration: '1 CPUs 2 GB', jobs: '0 Jobs' },
+    { active: 'Active', size: 'Small', type: 'Default', configuration: '1 CPUs 2 GB', jobs: '0 Jobs' },
+    { active: 'Active', size: 'Small', type: 'Default', configuration: '1 CPUs 2 GB', jobs: '0 Jobs' },
+    { active: 'Active', size: 'Small', type: 'Default', configuration: '1 CPUs 2 GB', jobs: '0 Jobs' },
+  ]);
   const redirectToNewTemplate = () => {
     navigate("/compute/add-new-template");
   };
+  const handleDelete = (index) => {
+    setTableData((prevData) => prevData.filter((_, i) => i !== index));
+  };
+  const columns = [
+    { Header: 'Active', accessor: 'active' },
+    { Header: 'Size', accessor: 'size' },
+    { Header: 'Type', accessor: 'type' },
+    { Header: 'Configuration', accessor: 'configuration' },
+    { Header: 'Jobs', accessor: 'jobs' },
+    { Header: 'Actions', accessor: 'actions' },
+  ];
+  const data = tableData.map((row, index) => ({
+    ...row,
+    actions: <i className="fas fa-trash" onClick={() => handleDelete(index)} />,
+  }));
 
   return (
     <div className="content-wrapper">
@@ -57,7 +79,11 @@ const Template = () => {
             </div>
           </div>
           <div className="row">
-            <table className="table">
+            <TableComponent
+             columns={columns}
+             data={data}
+            />
+            {/* <table className="table">
               <tbody>
                 <tr>
                   <td>Active</td>
@@ -110,7 +136,7 @@ const Template = () => {
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table> */}
           </div>
           {/* /.row */}
         </div>

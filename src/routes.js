@@ -35,6 +35,7 @@ const appRouter = createBrowserRouter([
   {
     path: AppRoutes.HOME,
     element: <Redirect />,
+    errorElement:<Error/>
   },
   {
     path: AppRoutes.HOME,

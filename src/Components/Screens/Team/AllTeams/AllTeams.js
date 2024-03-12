@@ -1,4 +1,39 @@
+import { useState } from "react";
+import TableComponent from "../../../TableComponent";
+
 const AllTeams = () => {
+    const [tableData, setTableData] = useState([
+        {
+          status: 'Active',
+          repositoryName: 'Python3.predict.py',
+          tag: 'Success',
+          registryName: 'Test123',
+          createdBy: '2024-12-14, 5:21:55 pm',
+        },
+        {
+            status: 'Active',
+            repositoryName: 'Python3.predict.py',
+            tag: 'Success',
+            registryName: 'cyz123',
+            createdBy: '2024-12-14, 5:21:55 pm',
+          },
+          {
+            status: 'Active',
+            repositoryName: 'Python3.predict.py',
+            tag: 'Success',
+            registryName: 'Xyz12',
+            createdBy: '2024-12-14, 5:21:55 pm',
+          },
+        // Add more data as needed
+      ]);
+      const columns = [
+        { Header: 'Status', accessor: 'status' },
+        { Header: 'Repository Name', accessor: 'repositoryName' },
+        { Header: 'Tag', accessor: 'tag' },
+        { Header: 'Registry Name', accessor: 'registryName' },
+        { Header: 'Created By', accessor: 'createdBy' },
+      ];
+      const data = tableData.map((row) => ({ ...row }));
     return (
         <div className="content-wrapper">
             {/* Content Header (Page header) */}
@@ -26,6 +61,7 @@ Order status or get some Help using Nifty.</p>*/}
             <div className="content">
                 <div className="container-fluid">
                     <div className="row">
+                    {/* <TableComponent columns={columns} data={data} /> */}
                         <table className="table">
                             <tbody><tr>
                                 <td>Status</td>
@@ -41,7 +77,8 @@ Order status or get some Help using Nifty.</p>*/}
                                     <td>Test123</td>
                                     <td>2024-12-14, 5:21:55 pm</td>
                                 </tr>
-                            </tbody></table>
+                            </tbody>
+                        </table>
                     </div>
                     {/* /.row */}
                 </div>{/* /.container-fluid */}
