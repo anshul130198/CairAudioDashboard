@@ -1,9 +1,22 @@
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logOut } from "../../../utils/userSlice";
 
 const Sidebar = () => {
   const AdminLTELogo = require("../../../Assets/img/AdminLTELogo.png");
   const user2 = require("../../../Assets/img/user2-160x160.jpg");
   console.log("sidebar called");
+
+  const dispatch = useDispatch();
+  const navigate= useNavigate();
+
+  const onLogOut = () => {
+
+    dispatch(logOut());
+    localStorage.clear();
+    navigate('/login');
+
+  }
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
@@ -107,12 +120,6 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="pages/layout/top-nav.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Queries</p>
-                  </a>
-                </li>
-                <li className="nav-item">
                   <Link to={"/data-set/commit"} className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
                     <p>Commits</p>
@@ -207,6 +214,9 @@ const Sidebar = () => {
                   </a>
                 </li>
               </ul>
+            </li>
+            <li onClick={onLogOut}>
+              Logout
             </li>
           </ul>
         </nav>
