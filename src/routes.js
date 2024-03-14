@@ -30,6 +30,9 @@ import AddNewTemplate from "./Components/Screens/Compute/Template/AddNewTemplate
 import Team from "./Components/Screens/Team/Team";
 import AllTeams from "./Components/Screens/Team/AllTeams/AllTeams";
 import Error from "./Components/Screens/Error/Error";
+import Organization from "./Components/Screens/Organization/Organization";
+import GetAllOrganizations from "./Components/Screens/Organization/GetAllOrganizations/GetAllOrganizations";
+import CreateOrganization from "./Components/Screens/Organization/CreateOrganization/CreateOrganization";
 
 const appRouter = createBrowserRouter([
   {
@@ -109,6 +112,21 @@ const appRouter = createBrowserRouter([
           {
             path: AppRoutes.COMMIT,
             element: <Commit />,
+          },
+        ],
+      },
+      {
+        path: AppRoutes.ORGANIZATION,
+        element: <AuthGuard><Organization /></AuthGuard>,
+        errorElement: <Error />,
+        children: [
+          {
+            path: AppRoutes.CREATE_ORGANIZATION,
+            element: <CreateOrganization />,
+          },
+          {
+            path: AppRoutes.GET_ALL_ORGANIZATIONS,
+            element: <GetAllOrganizations />,
           },
         ],
       },

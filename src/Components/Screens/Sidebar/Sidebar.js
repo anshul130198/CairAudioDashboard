@@ -133,6 +133,29 @@ const Sidebar = () => {
               </ul>
             </li>
             <li className="nav-item">
+              <a href="#" className="nav-link">
+                <i className="nav-icon fas fa-database" />
+                <p>
+                  Organization
+                  <i className="fas fa-angle-left right" />
+                </p>
+              </a>
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                <Link to={"/organization/create-organization"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Create Organization</p>
+                  </Link>
+                     <Link to={"/organization/get-all-organizations"} className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Get Organizations </p>
+                  </Link>
+      
+                </li>
+              </ul>
+            </li>
+
+            <li className="nav-item">
               <a className="nav-link">
                 <i className="nav-icon fas fa-copy" />
                 <p>
