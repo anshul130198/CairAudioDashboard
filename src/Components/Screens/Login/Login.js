@@ -5,7 +5,7 @@ import styles from "./Login.module.scss";
 import { Token, UserData } from "../../../Constants/userData";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loggedIn } from "../../../utils/userSlice";
+import { loggedIn } from "../../../store/userSlice";
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),

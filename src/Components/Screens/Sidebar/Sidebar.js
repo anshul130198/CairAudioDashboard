@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logOut } from "../../../utils/userSlice";
+import { logOut } from "../../../store/userSlice";
 
 const Sidebar = () => {
   const AdminLTELogo = require("../../../Assets/img/AdminLTELogo.png");
