@@ -31,29 +31,57 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.field}>
-          <label>Email:</label>
-          <input
-            type="text"
-            {...register("email")}
-            autoComplete="off"
-          />
-          {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+    <div className="login-box">
+      <div className="brand-link">
+        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
+        <span className="brand-text font-weight-bold clr-w">Audio Dashboard</span>
+      </div>
+      {/* /.login-logo */}
+      <div className="card loginshadow">
+        <div className="card-body login-card-body">
+          <p className="login-box-msg">Sign in to start your session</p>
+          <form onSubmit={handleSubmit(onSubmit)} >
+            <div className="input-group mb-3">
+              <input type="email" {...register("email")} className="form-control" placeholder="Email" />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-envelope" />
+                </div>
+              </div>
+            </div>
+            {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+            <div className="input-group mb-3">
+              <input type="password" {...register("password")} className="form-control" placeholder="Password" />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-lock" />
+                </div>
+              </div>
+            </div>
+            {errors.password && <p className={styles.error}>{errors.password.message}</p>}
+            <div className="row">
+              <div className="col-8">
+                <div className="icheck-primary">
+                  <input type="checkbox" id="remember" />
+                  <label htmlFor="remember">
+                    Remember Me
+                  </label>
+                </div>
+              </div>
+              {/* /.col */}
+              <div className="col-4">
+                <button type="submit" className="btn btn-primary btn-block">Sign In</button>
+              </div>
+              {/* /.col */}
+            </div>
+          </form>
+          {/* /.social-auth-links */}
+          <p className="mb-1">
+            <a className="fgtpass" onClick={() => navigate('/forgot-password')}>I forgot my password</a>
+          </p>
         </div>
-        <div className={styles.field}>
-          <label>Password:</label>
-          <input
-            type="password"
-            {...register("password")}
-            autoComplete="off"
-          />
-          {errors.password && <p className={styles.error}>{errors.password.message}</p>}
-        </div>
-        <button type="submit">Login</button>
-      </form>
+        {/* /.login-card-body */}
+      </div>
     </div>
   );
 };
