@@ -2,9 +2,11 @@ import "./App.css";
 import { RouterProvider } from "react-router-dom";
 import appRouter from "./routes";
 import { Provider } from "react-redux";
-import store from "./utils/store";
+import { useEffect, useState } from "react";
+import store from "./store/store";
 
 function App() {
+
   return (
     <div className="wrapper">
       <Provider store={store}>

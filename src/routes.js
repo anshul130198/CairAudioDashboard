@@ -33,12 +33,13 @@ import Error from "./Components/Screens/Error/Error";
 import Organization from "./Components/Screens/Organization/Organization";
 import GetAllOrganizations from "./Components/Screens/Organization/GetAllOrganizations/GetAllOrganizations";
 import CreateOrganization from "./Components/Screens/Organization/CreateOrganization/CreateOrganization";
+import ForgotPassword from "./Components/Screens/Login/ForgotPassword";
 
 const appRouter = createBrowserRouter([
   {
     path: AppRoutes.HOME,
     element: <Redirect />,
-    errorElement:<Error/>
+    errorElement: <Error />
   },
   {
     path: AppRoutes.HOME,
@@ -184,6 +185,11 @@ const appRouter = createBrowserRouter([
   {
     path: AppRoutes.LOGIN,
     element: <Login />,
+    errorElement: <Error />
+  },
+  {
+    path: AppRoutes.FORGOTPASSWORD,
+    element: <ForgotPassword />,
     errorElement: <Error />
   },
 ]);

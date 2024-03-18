@@ -7,6 +7,7 @@ export const AppRoutes = {
   COMPUTE: "/compute",
   TEAM: "/team",
   LOGIN: "/login",
+  FORGOTPASSWORD: "/forgot-password",
   STARTPROJECT: "start-project",
   PROJECT_PAGE: ":name",
   ADDFILETOPROJECT: "addFileToProject",
