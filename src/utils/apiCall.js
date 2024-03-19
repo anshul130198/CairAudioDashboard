@@ -1,76 +1,52 @@
+// api.js
+
 import axios from 'axios';
-import axiosInstance from './axiosInstance';
-import Cookies from 'js-cookie';
 
-export const apiCall = async ({
-  method,
-  route,
-  data,
-  skipAuth,
-  isDownload,
-  filename
-}) => {
-  const url = `${SERVER_URL}${route}`;
-  let headers = {
+const BASE_URL = 'http://127.0.0.1:8000/'; // Replace this with your base API URL
+
+// Create a custom Axios instance
+const apiInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: {
     'Content-Type': 'application/json',
-  };
-  if (isDownload) {
-    headers.responseType = 'blob'
+  },
+});
+
+// Add request interceptor to handle authentication
+apiInstance.interceptors.request.use(
+  (config) => {
+    // Add authentication logic here if needed
+    // For example:
+    const token = 'Bearer ' + localStorage.getItem('token');
+    config.headers.Authorization = token;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
+);
 
-  if (skipAuth) {
-    try {
-      const response = await axios({
-        method,
-        url,
-        headers,
-        data,
-      });
-      return response.data;
-    } catch (error) {
-      if (error.response) {
-        if (error.response.data.code === REDIRECT_CODE) {
-        
-          return;
-        } else {
-          throw error.response.data.error.error_message;
+// Add response interceptor to handle errors
+apiInstance.interceptors.response.use(
+  (response) => {
+    return response.data;
+  },
+  (error) => {
+    return Promise.reject(error.response.data.error || error.message);
+  }
+);
 
-        }
-      } else if (error.request) {
-
-        console.log('Error', error.request);
-      } else {
-
-        console.log('Error:', error.message);
-      }
-    }
-
-  } else {
-
-    try {
-      const response = await axiosInstance({
-        method,
-        url,
-        headers,
-        data,
-      });
-      if (isDownload) {
-        fileDownload(response.data, `${filename}.tar`);
-        return;
-      }
-      else {
-        return response.data;
-      }
-
-    } catch (error) {
-      if (error.response) {
-        throw error.response.data.error.error_message;
-      } else if (error.request) {
-        console.log('Error', error.request);
-      } else {
-
-        console.log('Error:', error.message);
-      }
-    }
+const apiCall = async ({ endpoint, method = 'GET', data = null }) => {
+  try {
+    const response = await apiInstance({
+      method,
+      url: endpoint,
+      data,
+    });
+    return response;
+  } catch (error) {
+    throw error;
   }
 };
+
+export default apiCall;
