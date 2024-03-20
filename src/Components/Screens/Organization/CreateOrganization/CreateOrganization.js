@@ -2,6 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 // import React from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { API } from '../../../../utils/api';
+import {toast } from 'react-toastify';
 
 const schema = yup.object().shape({
   name: yup.string().required('Organization Name is required'),
@@ -16,8 +18,10 @@ const CreateOrganization = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data); // You can handle form submission logic here
+  const onSubmit = async(data) => {
+    console.log(data); 
+    const response = await API.createOrganization(data);
+    console.log("responsresponsee",response);
   };
 
   return (

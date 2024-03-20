@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import TableComponent from '../../../TableComponent';
-import apiCall from '../../../../utils/apiCall';
+import {apiCall} from '../../../../utils/apiCall';
+import { useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../../../Constants/constants';
 
 const GetAllOrganizations = () => {
 
+  const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
   const columns = [
     { Header: 'Organization Name', accessor: 'name' },
@@ -15,7 +18,7 @@ const GetAllOrganizations = () => {
   const data = tableData.map((row, index) => ({
     ...row,
     actions: <>
-      <a className="fa fa-pencil-alt" />
+      <a className="fa fa-pencil-alt" onClick={() => editOrganization(row.id,row)}  />
       <a className="fa fa-trash" onClick={() => deleteData(row.id)} />
     </>,
   }));
@@ -23,7 +26,7 @@ const GetAllOrganizations = () => {
   const fetchData = async () => {
     try {
       const data = await apiCall({
-        endpoint: 'organization/organization',
+        endpoint: 'organization/organization-list',
         method: 'GET',
       });
       console.log('Data received:', data);
@@ -34,10 +37,15 @@ const GetAllOrganizations = () => {
     }
   };
 
+  const editOrganization = async (id,row) => {
+    console.log("dddddddddddddddddddddddddddd",id,row);
+    navigate(`../${AppRoutes.EDIT_ORGANIZATION}`, { replace: true });
+
+  }
   const deleteData = async (id) => {
     try {
       const data = await apiCall({
-        endpoint: `organization/organization/${id}`,
+        endpoint: `organization/${id}/delete`,
         method: 'DELETE',
       });
       console.log('After Delete received:', data);

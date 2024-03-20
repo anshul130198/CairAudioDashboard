@@ -28,5 +28,25 @@ export const AppRoutes = {
   ADD_NEW_TEMPLATE: "add-new-template",
   ALL_TEAMS: "all-teams",
   GET_ALL_ORGANIZATIONS:"get-all-organizations",
-  CREATE_ORGANIZATION:"create-organization"
+  CREATE_ORGANIZATION:"create-organization",
+  EDIT_ORGANIZATION:"edit-organization"
+
+};
+
+export const SERVER_URL ='http://127.0.0.1:8000/';
+
+export const API_METHODS = {
+  'POST': 'POST',
+  'PUT': 'PUT',
+  'PATCH': 'PATCH',
+  'GET': 'GET',
+  'DELETE': 'DELETE',
+};
+export const USER_ROLES = {
+  ADMIN: 'admin',
+  USER: 'user',
+  COADMIN: 'co-admin',
+};
+export const API_ROUTES = {
+ CREATE_ORGANIZATION: '/organization/create'
 };

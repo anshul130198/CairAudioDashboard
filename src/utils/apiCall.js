@@ -1,12 +1,10 @@
 // api.js
 
 import axios from 'axios';
-
-const BASE_URL = 'http://127.0.0.1:8000/'; // Replace this with your base API URL
-
+import { SERVER_URL } from '../Constants/constants';
 // Create a custom Axios instance
 const apiInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: SERVER_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -36,7 +34,8 @@ apiInstance.interceptors.response.use(
   }
 );
 
-const apiCall = async ({ endpoint, method = 'GET', data = null }) => {
+export const apiCall = async ({ endpoint, method = 'GET', data = null }) => {
+  console.log( endpoint, method, data ,">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
   try {
     const response = await apiInstance({
       method,
@@ -49,4 +48,3 @@ const apiCall = async ({ endpoint, method = 'GET', data = null }) => {
   }
 };
 
-export default apiCall;

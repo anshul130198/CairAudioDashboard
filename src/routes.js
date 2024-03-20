@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { AppRoutes } from "./Constants/app.routes";
+import { AppRoutes } from "./Constants/constants";
 import Redirect from "./Components/Redirect/Redirect";
 import Layout from "./Components/Layout/Layout";
 import Login from "./Components/Screens/Login/Login";
@@ -123,6 +123,10 @@ const appRouter = createBrowserRouter([
         children: [
           {
             path: AppRoutes.CREATE_ORGANIZATION,
+            element: <CreateOrganization />,
+          },
+          {
+            path: AppRoutes.EDIT_ORGANIZATION,
             element: <CreateOrganization />,
           },
           {
