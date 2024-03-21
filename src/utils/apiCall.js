@@ -35,7 +35,6 @@ apiInstance.interceptors.response.use(
 );
 
 export const apiCall = async ({ endpoint, method = 'GET', data = null }) => {
-  console.log( endpoint, method, data ,">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
   try {
     const response = await apiInstance({
       method,

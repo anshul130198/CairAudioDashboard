@@ -1,9 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-// import React from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { API } from '../../../../utils/api';
-import {toast } from 'react-toastify';
+import { useParams } from 'react-router';
+import { useEffect } from 'react';
+import { apiCall } from '../../../../utils/apiCall';
+import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
+import { toast } from 'react-toastify';
 
 const schema = yup.object().shape({
   name: yup.string().required('Organization Name is required'),
@@ -14,14 +16,55 @@ const schema = yup.object().shape({
 });
 
 const CreateOrganization = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async(data) => {
-    console.log(data); 
-    const response = await API.createOrganization(data);
-    console.log("responsresponsee",response);
+  const param = useParams();
+
+  useEffect(() => {
+    if(param?.id) {
+      const fetchOrganization = async () => {
+        try {
+          // const response = await API.getOrganization(param.id);
+          const response = await apiCall({
+            endpoint: `${API_ROUTES.ORGANIZATION}/${param.id}/`,
+            method: API_METHODS.GET
+          })
+          console.log(response, 'dattttttaaaa')
+          Object.keys(response).forEach(key => {
+            if (key in response) {
+              setValue(key, response[key]);
+            }
+          });
+        } catch (error) {
+          console.error('Error fetching organization:', error);
+          // Handle error
+        }
+      };
+
+      fetchOrganization();
+    }
+  }, [param.id, setValue]);
+
+  const onSubmit = async (data,e) => {
+    try {
+      // const response = await API.createOrganization(data);
+      const response = await apiCall({
+        endpoint: API_ROUTES.CREATE_ORGANIZATION,
+        method: 'POST',
+        data
+      });
+      console.log("Response", response);
+      if(response && response.id) {
+        toast.success('organization created successfully');
+        e.target.reset();
+      }
+      // Optionally, you can show a success message or redirect to another page upon successful submission
+    } catch (error) {
+      console.error('Error creating organization:', error);
+      // Handle error
+    }
   };
 
   return (
@@ -46,7 +89,7 @@ const CreateOrganization = () => {
             <div className="mb-4 offset-xl-3 col-xl-5">
               <div className="card minh445">
                 <div className="card-body">
-                  <h4 className="text-center">Create New Organization<br /><br /></h4>
+                  <h4 className="text-center">{param?.id ? 'Edit Organization' : 'Create New Organization'}<br /><br /></h4>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                       <label htmlFor="organizationName">Organization Name</label>
@@ -104,7 +147,7 @@ const CreateOrganization = () => {
                       {errors.description && <span className="text-danger">{errors.description.message}</span>}
                     </div>
                     <div className="form-group">
-                      <button type="submit" className="btn btn-block btn-success">Create</button>
+                      <button type="submit" className="btn btn-block btn-success">{param?.id ? 'Save' : 'Create'}</button>
                     </div>
                   </form>
                 </div>

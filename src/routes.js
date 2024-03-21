@@ -126,7 +126,7 @@ const appRouter = createBrowserRouter([
             element: <CreateOrganization />,
           },
           {
-            path: AppRoutes.EDIT_ORGANIZATION,
+            path: `${AppRoutes.EDIT_ORGANIZATION}/:id`,
             element: <CreateOrganization />,
           },
           {

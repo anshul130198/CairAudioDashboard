@@ -27,13 +27,13 @@ export const AppRoutes = {
   STORAGE: "storage",
   ADD_NEW_TEMPLATE: "add-new-template",
   ALL_TEAMS: "all-teams",
-  GET_ALL_ORGANIZATIONS:"get-all-organizations",
-  CREATE_ORGANIZATION:"create-organization",
-  EDIT_ORGANIZATION:"edit-organization"
+  GET_ALL_ORGANIZATIONS: "get-all-organizations",
+  CREATE_ORGANIZATION: "create-organization",
+  EDIT_ORGANIZATION: "edit-organization"
 
 };
 
-export const SERVER_URL ='http://127.0.0.1:8000/';
+export const SERVER_URL = 'http://127.0.0.1:8000/';
 
 export const API_METHODS = {
   'POST': 'POST',
@@ -48,5 +48,7 @@ export const USER_ROLES = {
   COADMIN: 'co-admin',
 };
 export const API_ROUTES = {
- CREATE_ORGANIZATION: '/organization/create'
+  ORGANIZATION: 'organization',
+  CREATE_ORGANIZATION: 'organization/create',
+  GET_ORGANIZATIONS_LIST: 'organization/organization-list',
 };
