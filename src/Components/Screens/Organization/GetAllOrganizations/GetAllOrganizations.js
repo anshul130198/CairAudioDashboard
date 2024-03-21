@@ -3,6 +3,7 @@ import TableComponent from '../../../TableComponent';
 import { apiCall } from '../../../../utils/apiCall';
 import { useNavigate } from 'react-router-dom';
 import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
+import { Tooltip } from 'react-tooltip'
 
 const GetAllOrganizations = () => {
 
@@ -18,8 +19,8 @@ const GetAllOrganizations = () => {
   const data = tableData.map((row, index) => ({
     ...row,
     actions: <>
-      <a className="fa fa-pencil-alt mr-rt-5" onClick={() => editOrganization(row.id, row)} />
-      <a className="fa fa-trash" onClick={() => deleteData(row.id)} />
+      <a className="fa fa-pencil-alt mr-rt-5" onClick={() => editOrganization(row.id, row)} data-tooltip-id="my-tooltip" data-tooltip-content="Edit"/>
+      <a className="fa fa-trash" onClick={() => deleteData(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete"/>
     </>,
   }));
 
@@ -116,6 +117,7 @@ Order status or get some Help using Nifty.</p>*/}
           </div>
           {/* /.row */}
         </div>{/* /.container-fluid */}
+        <Tooltip id="my-tooltip" />
       </div>
       {/* /.content */}
     </div>
