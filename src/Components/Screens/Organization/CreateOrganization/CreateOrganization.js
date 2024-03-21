@@ -2,10 +2,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { useParams } from 'react-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { apiCall } from '../../../../utils/apiCall';
 import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
 
 const schema = yup.object().shape({
   name: yup.string().required('Organization Name is required'),
@@ -16,14 +18,16 @@ const schema = yup.object().shape({
 });
 
 const CreateOrganization = () => {
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm({
+  const { register,reset, handleSubmit, formState: { errors }, setValue } = useForm({
     resolver: yupResolver(schema),
   });
-
+  const [initialOrgData, setInitialOrgData] = useState({});
   const param = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if(param?.id) {
+   reset();
+    if (param?.id) {
       const fetchOrganization = async () => {
         try {
           // const response = await API.getOrganization(param.id);
@@ -31,7 +35,8 @@ const CreateOrganization = () => {
             endpoint: `${API_ROUTES.ORGANIZATION}/${param.id}/`,
             method: API_METHODS.GET
           })
-          console.log(response, 'dattttttaaaa')
+          setInitialOrgData(response);
+          console.log(response, 'dattttttaaaa>>>>>>>>>>>>>>>')
           Object.keys(response).forEach(key => {
             if (key in response) {
               setValue(key, response[key]);
@@ -47,24 +52,45 @@ const CreateOrganization = () => {
     }
   }, [param.id, setValue]);
 
-  const onSubmit = async (data,e) => {
-    try {
-      // const response = await API.createOrganization(data);
+  const onSubmit = async (data, e) => {
+    console.log("dtaaaaaaaaa", data);
+    const organizationId = param?.id;
+    if (organizationId) {
+      const changedFields = Object.keys(data).filter(key => data[key] !== initialOrgData[key]);
+      const changedData = Object.fromEntries(changedFields.map(key => [key, data[key]]));
+      console.log(changedFields,"changedFields",">>>>>>>>>>>>>>>","changedData",changedData);
       const response = await apiCall({
-        endpoint: API_ROUTES.CREATE_ORGANIZATION,
-        method: 'POST',
-        data
+        endpoint: `${API_ROUTES.ORGANIZATION}/${organizationId}/edit`,
+        method: API_METHODS.PUT,
+        data: changedData
       });
+
       console.log("Response", response);
-      if(response && response.id) {
-        toast.success('organization created successfully');
-        e.target.reset();
+      if (response && response.id) {
+        // e.target.reset();
+        navigate(`../${AppRoutes.GET_ALL_ORGANIZATIONS}`);
+
+        // toast.success('Organization updated successfully');
       }
-      // Optionally, you can show a success message or redirect to another page upon successful submission
-    } catch (error) {
-      console.error('Error creating organization:', error);
-      // Handle error
+    } else {
+      try {
+        // const response = await API.createOrganization(data);
+        const response = await apiCall({
+          endpoint: API_ROUTES.CREATE_ORGANIZATION,
+          method: 'POST',
+          data
+        });
+        console.log("Response", response);
+        if(response && response.id) {
+          // toast.success('organization created successfully');
+          e.target.reset();
+        }
+
+      } catch (error) {
+        console.error('Error creating organization:', error);
+      }
     }
+
   };
 
   return (
@@ -101,6 +127,23 @@ const CreateOrganization = () => {
                         {...register("name")}
                       />
                       {errors.name && <span className="text-danger">{errors.name.message}</span>}
+                      {/* <InputField
+                        type="text"
+                        className="form-control"
+                        id="organizationName"
+                        placeholder="Enter Organization Name"
+                        {...register("name")} 
+                      /> */}
+                      {/* <InputField
+                        type="text"
+                        className="form-control"
+                        name="name"
+                        placeholder="Enter Organization Name"
+                        register={register}
+                        error={errors.name}
+                      /> */}
+
+                      {/* {errors.name &&  <ErrorText errorText={errors.name.message}/>} */}
                     </div>
                     <div className="form-group">
                       <label htmlFor="organizationSlug">Organization Slug</label>

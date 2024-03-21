@@ -39,8 +39,8 @@ const GetAllOrganizations = () => {
 
   const editOrganization = async (id, row) => {
     navigate(`../${AppRoutes.EDIT_ORGANIZATION}/${id}`);
-
-  }
+    
+    }
   const deleteData = async (id) => {
     try {
       const data = await apiCall({
