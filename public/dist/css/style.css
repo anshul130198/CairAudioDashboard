@@ -528,6 +528,10 @@ h5,
     border-color: transparent;
 }
 
+.mr-rt-5{
+    margin-right: 5px;
+}
+
 .loginshadow {
     box-shadow: 0 1rem 3rem rgba(55, 60, 67, .175) !important;
 }

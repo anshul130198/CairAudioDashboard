@@ -27,7 +27,7 @@ export const AppRoutes = {
   STORAGE: "storage",
   ADD_NEW_TEMPLATE: "add-new-template",
   ALL_TEAMS: "all-teams",
-  GET_ALL_ORGANIZATIONS: "get-all-organizations",
+  GET_ALL_ORGANIZATIONS: "all-organizations",
   CREATE_ORGANIZATION: "create-organization",
   EDIT_ORGANIZATION: "edit-organization"
 

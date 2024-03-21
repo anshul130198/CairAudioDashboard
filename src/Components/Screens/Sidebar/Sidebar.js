@@ -153,9 +153,9 @@ const Sidebar = () => {
                     <i className="far fa-circle nav-icon"></i>
                     <p>Create Organization</p>
                   </Link>
-                     <Link to={"/organization/get-all-organizations"} className="nav-link">
+                     <Link to={"/organization/all-organizations"} className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
-                    <p>Get Organizations </p>
+                    <p>All Organizations</p>
                   </Link>
       
                 </li>

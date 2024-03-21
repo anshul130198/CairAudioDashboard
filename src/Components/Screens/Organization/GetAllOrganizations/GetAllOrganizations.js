@@ -18,7 +18,7 @@ const GetAllOrganizations = () => {
   const data = tableData.map((row, index) => ({
     ...row,
     actions: <>
-      <a className="fa fa-pencil-alt" onClick={() => editOrganization(row.id, row)} />
+      <a className="fa fa-pencil-alt mr-rt-5" onClick={() => editOrganization(row.id, row)} />
       <a className="fa fa-trash" onClick={() => deleteData(row.id)} />
     </>,
   }));
