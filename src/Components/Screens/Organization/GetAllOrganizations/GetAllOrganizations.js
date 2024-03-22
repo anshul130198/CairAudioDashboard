@@ -4,6 +4,7 @@ import { apiCall } from '../../../../utils/apiCall';
 import { useNavigate } from 'react-router-dom';
 import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
 import { Tooltip } from 'react-tooltip'
+import './index.scss'
 
 const GetAllOrganizations = () => {
 
@@ -18,10 +19,10 @@ const GetAllOrganizations = () => {
   ];
   const data = tableData.map((row, index) => ({
     ...row,
-    actions: <>
-      <a className="fa fa-pencil-alt mr-rt-5" onClick={() => editOrganization(row.id, row)} data-tooltip-id="my-tooltip" data-tooltip-content="Edit"/>
+    actions: <div className='actions'>
+      <a className="fa fa-pencil-alt" onClick={() => editOrganization(row.id, row)}  data-tooltip-id="my-tooltip" data-tooltip-content="Edit"/>
       <a className="fa fa-trash" onClick={() => deleteData(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete"/>
-    </>,
+    </div>,
   }));
 
   const fetchData = async () => {
@@ -40,7 +41,7 @@ const GetAllOrganizations = () => {
 
   const editOrganization = async (id, row) => {
     navigate(`../${AppRoutes.EDIT_ORGANIZATION}/${id}`);
-    
+
     }
   const deleteData = async (id) => {
     try {

@@ -7,6 +7,7 @@ import { apiCall } from '../../../../utils/apiCall';
 import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import InputField from '../../../InputField/InputField';
 
 
 const schema = yup.object().shape({
@@ -119,13 +120,13 @@ const CreateOrganization = () => {
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                       <label htmlFor="organizationName">Organization Name</label>
-                      <input
+                      {/* <input
                         type="text"
                         className="form-control"
                         id="organizationName"
                         placeholder="Enter Organization Name"
                         {...register("name")}
-                      />
+                      /> */}
                       {errors.name && <span className="text-danger">{errors.name.message}</span>}
                       {/* <InputField
                         type="text"
@@ -134,58 +135,84 @@ const CreateOrganization = () => {
                         placeholder="Enter Organization Name"
                         {...register("name")} 
                       /> */}
-                      {/* <InputField
+                      <InputField
                         type="text"
                         className="form-control"
                         name="name"
                         placeholder="Enter Organization Name"
                         register={register}
                         error={errors.name}
-                      /> */}
+                      />
 
                       {/* {errors.name &&  <ErrorText errorText={errors.name.message}/>} */}
                     </div>
                     <div className="form-group">
                       <label htmlFor="organizationSlug">Organization Slug</label>
-                      <input
+                      <InputField
                         type="text"
                         className="form-control"
-                        id="organizationSlug"
+                        name="slug"
                         placeholder="Enter Organization Slug"
-                        {...register("slug")}
+                        register={register}
+                        error={errors.slug}
                       />
+
                       {errors.slug && <span className="text-danger">{errors.slug.message}</span>}
                     </div>
                     <div className="form-group">
                       <label htmlFor="organizationEmail">Organization Email</label>
-                      <input
+                      <InputField
+                        type="text"
+                        className="form-control"
+                        name="email"
+                        placeholder="Enter Organization Email"
+                        register={register}
+                        error={errors.email}
+                      />
+                      {/* <input
                         type="text"
                         className="form-control"
                         id="organizationEmail"
                         placeholder="Enter Organization Email"
                         {...register("email")}
-                      />
+                      /> */}
                       {errors.email && <span className="text-danger">{errors.email.message}</span>}
                     </div>
                     <div className="form-group">
                       <label htmlFor="organizationBillingEmail">Organization Billing Email</label>
-                      <input
+                      <InputField
+                        type="text"
+                        className="form-control"
+                        name="billing_email"
+                        placeholder="Enter Billing Email"
+                        register={register}
+                        error={errors.billing_email}
+                      />
+                      {/* <input
                         type="text"
                         className="form-control"
                         id="organizationBillingEmail"
                         placeholder="Enter Organization Billing Email"
                         {...register("billing_email")}
-                      />
+                      /> */}
                       {errors.billing_email && <span className="text-danger">{errors.billing_email.message}</span>}
                     </div>
                     <div className="form-group">
                       <label htmlFor="description">Description</label>
-                      <input
+                      {/* <input
                         type="text"
                         className="form-control"
                         id="description"
                         placeholder="Enter Description"
                         {...register("description")}
+                      /> */}
+                        <InputField
+                        type="text"
+                        className="form-control"
+                        name="description"
+                        placeholder="Enter Description"
+                        register={register}
+                        error={errors.description}
                       />
                       {errors.description && <span className="text-danger">{errors.description.message}</span>}
                     </div>

@@ -6,6 +6,7 @@ import { Token, UserData } from "../../../Constants/userData";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loggedIn } from "../../../store/userSlice";
+import InputField from "../../InputField/InputField";
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
@@ -42,7 +43,15 @@ const Login = () => {
           <p className="login-box-msg">Sign in to start your session</p>
           <form onSubmit={handleSubmit(onSubmit)} >
             <div className="input-group mb-3">
-              <input type="email" {...register("email")} className="form-control" placeholder="Email" />
+                     <InputField
+                        type="email"
+                        className="form-control"
+                        name="email"
+                        placeholder="Email"
+                        register={register}
+                        error={errors.email}
+                      />
+              {/* <input type="email" {...register("email")} className="form-control" placeholder="Email" /> */}
               <div className="input-group-append">
                 <div className="input-group-text">
                   <span className="fas fa-envelope" />
@@ -51,7 +60,15 @@ const Login = () => {
             </div>
             {errors.email && <p className={styles.error}>{errors.email.message}</p>}
             <div className="input-group mb-3">
-              <input type="password" {...register("password")} className="form-control" placeholder="Password" />
+              {/* <input type="password" {...register("password")} className="form-control" placeholder="Password" /> */}
+                     <InputField
+                        type="password"
+                        className="form-control"
+                        name="password"
+                        placeholder="password"
+                        register={register}
+                        error={errors.password}
+                      />
               <div className="input-group-append">
                 <div className="input-group-text">
                   <span className="fas fa-lock" />
