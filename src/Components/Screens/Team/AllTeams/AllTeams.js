@@ -61,24 +61,8 @@ Order status or get some Help using Nifty.</p>*/}
             <div className="content">
                 <div className="container-fluid">
                     <div className="row">
-                    {/* <TableComponent columns={columns} data={data} /> */}
-                        <table className="table">
-                            <tbody><tr>
-                                <td>Status</td>
-                                <td>Repository Name</td>
-                                <td>Tag</td>
-                                <td>Regisiry Name</td>
-                                <td>Created By</td>
-                            </tr>
-                                <tr>
-                                    <td>Active</td>
-                                    <td>Python3.predict.py</td>
-                                    <td>Sucess</td>
-                                    <td>Test123</td>
-                                    <td>2024-12-14, 5:21:55 pm</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <TableComponent columns={columns} data={data} />
+                
                     </div>
                     {/* /.row */}
                 </div>{/* /.container-fluid */}

@@ -1,4 +1,33 @@
+import { useState } from "react";
+import TableComponent from "../../../TableComponent";
+
 const Storage = () => {
+  const [tableData, setTableData] = useState([{
+  Title:"Active",
+   Type: "Python3.predict.py",
+   Active:  "Sucess",
+   Capacity: "Test123",
+   created_at:"2024-12-14, 5:21:55 pm",
+   created_by:  "Test123",
+   Status:  "2024-12-14, 5:21:55 pm",
+   menu  :"2024-12-14, 5:21:55 pm",  
+  }]);
+
+  const columns = [
+    { Header: 'Title', accessor: 'Title' },
+    { Header: 'Type', accessor: 'Type' },
+    { Header: 'Active', accessor: 'Active' },
+    { Header: 'Capacity', accessor: 'Capacity' },
+    { Header: 'Created At', accessor: 'created_at' },
+    { Header: 'Created By', accessor: 'created_by' },
+    { Header: 'Status', accessor: 'Status' },
+    { Header: 'Menu', accessor: 'menu' },
+
+
+  ];
+  const data = tableData.map((row, index) => ({
+    ...row,
+  }));
   return (
     <div className="content-wrapper">
       {/* Content Header (Page header) */}
@@ -49,30 +78,11 @@ Order status or get some Help using Nifty.</p>*/}
             </div>
           </div>
           <div className="row">
-            <table className="table">
-              <tbody>
-                <tr>
-                  <td>Title</td>
-                  <td>Type</td>
-                  <td>Active</td>
-                  <td>Capacity</td>
-                  <td>Created At</td>
-                  <td>Created By</td>
-                  <td>Status</td>
-                  <td>Menu</td>
-                </tr>
-                <tr>
-                  <td>Active</td>
-                  <td>Python3.predict.py</td>
-                  <td>Sucess</td>
-                  <td>Test123</td>
-                  <td>2024-12-14, 5:21:55 pm</td>
-                  <td>Test123</td>
-                  <td>2024-12-14, 5:21:55 pm</td>
-                  <td>2024-12-14, 5:21:55 pm</td>
-                </tr>
-              </tbody>
-            </table>
+          <TableComponent
+            columns={columns}
+            data={data}
+          />
+         
           </div>
           {/* /.row */}
         </div>

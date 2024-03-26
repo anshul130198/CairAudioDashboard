@@ -2,10 +2,28 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegistryModal from "../../../Modals/RegistryModal";
 import Modal from "../../../Modals/Modal";
+import TableComponent from "../../../TableComponent";
 
 const Registry = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tableData, setTableData] = useState([{
+    status:'Active',
+    repository_name:'Python3.predict.py',
+    tag:'Sucess',
+    regisiry_name:'Test123',
+    created_by:'2024-12-14, 5:21:55 pm'
+  }]);
 
+  const columns = [
+    { Header: 'Status', accessor: 'status' },
+    { Header: 'Repository Name', accessor: 'repository_name' },
+    { Header: 'Tag', accessor: 'tag' },
+    { Header: 'Regisiry Name', accessor: 'regisiry_name' },
+    { Header: 'Created By', accessor: 'created_by' },
+  ];
+  const data = tableData.map((row, index) => ({
+    ...row,
+  }));
   const navigate = useNavigate();
 
   const handleBuildImg = () => {
@@ -89,24 +107,10 @@ Order status or get some Help using Nifty.</p>*/}
             <button className="btn btn-success">Pull Image</button>
           </div>
           <div className="row">
-            <table className="table">
-              <tbody>
-                <tr>
-                  <td>Status</td>
-                  <td>Repository Name</td>
-                  <td>Tag</td>
-                  <td>Regisiry Name</td>
-                  <td>Created By</td>
-                </tr>
-                <tr>
-                  <td>Active</td>
-                  <td>Python3.predict.py</td>
-                  <td>Sucess</td>
-                  <td>Test123</td>
-                  <td>2024-12-14, 5:21:55 pm</td>
-                </tr>
-              </tbody>
-            </table>
+            <TableComponent
+             columns={columns}
+             data={data}
+            />
           </div>
           {/* /.row */}
         </div>
