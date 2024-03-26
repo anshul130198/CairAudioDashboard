@@ -30,8 +30,11 @@ export const AppRoutes = {
   GET_ALL_ORGANIZATIONS: "all-organizations",
   CREATE_ORGANIZATION: "create-organization",
   EDIT_ORGANIZATION: "edit-organization",
-  CREATE_ORGANIZATION_SETTINGS: "create-organization-setting",
-  GET_ALL_ORGANIZATIONS_SETTINGS: "all-organizations-setting",
+  VIEW_ORGANIZATION: "view-organization",
+  CREATE_SETTINGS: "create-setting",
+  GET_ALL_SETTINGS: "all-setting",
+  EDIT_SETTING: "edit-setting",
+  VIEW_SETTING: "view-setting",
 };
 
 export const SERVER_URL = 'http://127.0.0.1:8000/';

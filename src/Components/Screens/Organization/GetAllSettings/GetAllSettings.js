@@ -18,13 +18,14 @@ const GetAllSettings = () => {
   ];
   const data = tableData.map((row, index) => ({
     ...row,
-    url:row.api_url, 
-    disk:row.data_limit_mb,
-    max_datasets:row.max_datasets,
-    max_projects:row.max_projects,
+    url: row.api_url,
+    disk: row.data_limit_mb,
+    max_datasets: row.max_datasets,
+    max_projects: row.max_projects,
     actions: <div className='actions'>
-      <a className="fa fa-pencil-alt" onClick={() => editOrganization(row.id, row)}  data-tooltip-id="my-tooltip" data-tooltip-content="Edit"/>
-      <a className="fa fa-trash" onClick={() => deleteData(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete"/>
+      <a className="fa fa-eye" onClick={() => viewOrganization(row?.organization, row)} data-tooltip-id="my-tooltip" data-tooltip-content="View" />
+      <a className="fa fa-pencil-alt" onClick={() => editOrganization(row?.organization, row)} data-tooltip-id="my-tooltip" data-tooltip-content="Edit" />
+      <a className="fa fa-trash" onClick={() => deleteData(row?.organization)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete" />
     </div>,
   }));
 
@@ -43,9 +44,12 @@ const GetAllSettings = () => {
   };
 
   const editOrganization = async (id, row) => {
-    navigate(`../${AppRoutes.EDIT_ORGANIZATION}/${id}`);
+    navigate(`../${AppRoutes.EDIT_SETTING}/${id}`);
+  }
 
-    }
+  const viewOrganization = async (id, row) => {
+    navigate(`../${AppRoutes.VIEW_SETTING}/${id}`)
+  }
   const deleteData = async (id) => {
     try {
       const data = await apiCall({

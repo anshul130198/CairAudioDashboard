@@ -158,12 +158,12 @@ const Sidebar = () => {
                     <p>All Organizations</p>
                   </Link>
 
-                  <Link to={"organization/create-organization-setting"} className="nav-link">
+                  <Link to={"organization/create-setting"} className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
                     <p>Organizations Setting</p>
                   </Link>
                 
-                  <Link to={"organization/all-organizations-setting"} className="nav-link">
+                  <Link to={"organization/all-setting"} className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
                     <p>All Settings</p>
                   </Link>

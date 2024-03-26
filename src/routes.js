@@ -132,16 +132,28 @@ const appRouter = createBrowserRouter([
             element: <CreateOrganization />,
           },
           {
+            path: `${AppRoutes.VIEW_ORGANIZATION}/:id`,
+            element: <CreateOrganization />,
+          },
+          {
             path: AppRoutes.GET_ALL_ORGANIZATIONS,
             element: <GetAllOrganizations />,
           },
           {
-            path: `${AppRoutes.CREATE_ORGANIZATION_SETTINGS}`,
+            path: `${AppRoutes.CREATE_SETTINGS}`,
             element: <CreateOrganizationSetting />,
           },
           {
-            path: AppRoutes.GET_ALL_ORGANIZATIONS_SETTINGS,
+            path: AppRoutes.GET_ALL_SETTINGS,
             element: <GetAllSettings />,
+          },
+          {
+            path: `${AppRoutes.EDIT_SETTING}/:id`,
+            element: <CreateOrganizationSetting />,
+          },
+          {
+            path: `${AppRoutes.VIEW_SETTING}/:id`,
+            element: <CreateOrganizationSetting />,
           },
         ],
       },
