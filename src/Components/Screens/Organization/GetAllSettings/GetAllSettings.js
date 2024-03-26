@@ -4,21 +4,24 @@ import { apiCall } from '../../../../utils/apiCall';
 import { useNavigate } from 'react-router-dom';
 import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
 import { Tooltip } from 'react-tooltip'
-import './index.scss'
 
-const GetAllOrganizations = () => {
+const GetAllSettings = () => {
 
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
   const columns = [
-    { Header: 'Organization Name', accessor: 'name' },
-    { Header: 'Organization Email', accessor: 'email' },
-    { Header: 'Slug', accessor: 'slug' },
-    { Header: 'Billing Email', accessor: 'billing_email' },
+    { Header: 'Url', accessor: 'url' },
+    { Header: 'Disk size', accessor: 'disk' },
+    { Header: 'Max Datasets', accessor: 'max_datasets' },
+    { Header: 'Max Projects', accessor: 'max_projects' },
     { Header: 'Actions', accessor: 'actions' },
   ];
   const data = tableData.map((row, index) => ({
     ...row,
+    url:row.api_url, 
+    disk:row.data_limit_mb,
+    max_datasets:row.max_datasets,
+    max_projects:row.max_projects,
     actions: <div className='actions'>
       <a className="fa fa-pencil-alt" onClick={() => editOrganization(row.id, row)}  data-tooltip-id="my-tooltip" data-tooltip-content="Edit"/>
       <a className="fa fa-trash" onClick={() => deleteData(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete"/>
@@ -28,7 +31,7 @@ const GetAllOrganizations = () => {
   const fetchData = async () => {
     try {
       const data = await apiCall({
-        endpoint: API_ROUTES.GET_ORGANIZATIONS_LIST,
+        endpoint: API_ROUTES.GET_ORGANIZATIONS_SETTINGS_LIST,
         method: API_METHODS.GET,
       });
       console.log('Data received:', data);
@@ -46,7 +49,7 @@ const GetAllOrganizations = () => {
   const deleteData = async (id) => {
     try {
       const data = await apiCall({
-        endpoint: `${API_ROUTES.ORGANIZATION}/${id}/delete`,
+        endpoint: `${API_ROUTES.ORGANIZATION}/${id}/settings-delete`,
         method: 'DELETE',
       });
       console.log('After Delete received:', data);
@@ -70,21 +73,18 @@ const GetAllOrganizations = () => {
             <div className="col-sm-6">
               <ol className="breadcrumb">
                 <li className="breadcrumb-item"><a href="#">Organization</a></li>
-                <li className="breadcrumb-item active">Details</li>
+                <li className="breadcrumb-item active">All Organization Setting</li>
               </ol>
               <h1 className="m-0 font-weight-bold clr-w pb10">Organization</h1>
               <h5 className="clr-w min50">&nbsp;</h5>
+              {/*<p class="clr-g">Scroll down to see quick links and overviews of your Server, To do list
+Order status or get some Help using Nifty.</p>*/}
+            </div>
 
-            </div>{/* /.col */}
-            <div className="col-sm-3 offset-xl-3 padt20">
-              <button type="button" className="btn btn-block btn-success col-sm-8" data-toggle="modal" data-target="#registries">Create Team</button>
-              {/*<p>Connect your git repository and work seamlessly with it.</p>*/}
-            </div>{/* /.col */}
-          </div>{/* /.row */}
-        </div>{/* /.container-fluid */}
+          </div>
+        </div>
       </div>
-      {/* /.content-header */}
-      {/* Main content */}
+
       <div className="content">
         <div className="container-fluid">
           <div className="row">
@@ -92,30 +92,7 @@ const GetAllOrganizations = () => {
               columns={columns}
               data={data}
             />
-            {/* <table className="table">
-          <tbody><tr>
-              <td>Status</td>
-              <td>Organization Name</td>
-              <td>Tag</td>
-              <td>Regisiry Name</td>
-              <td>Created By</td>
-              <td>Created By</td>
-            </tr>
-            <tr>
-              <td>Active</td>
-              <td>Python3.predict.py</td>
-              <td>Sucess</td>
-              <td>Test123</td>
-              <td>2024-12-14, 5:21:55 pm</td>
-              <td>
-                <ul className="none">
-                  <li><a className="fa fa-pencil-alt" /></li>
-                  <li><a  className="fa fa-trash" /></li>
-                </ul></td>
-            </tr>
-          </tbody></table> */}
           </div>
-          {/* /.row */}
         </div>{/* /.container-fluid */}
         <Tooltip id="my-tooltip" />
       </div>
@@ -125,4 +102,4 @@ const GetAllOrganizations = () => {
   )
 }
 
-export default GetAllOrganizations
+export default GetAllSettings

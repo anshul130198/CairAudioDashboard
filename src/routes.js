@@ -34,6 +34,8 @@ import Organization from "./Components/Screens/Organization/Organization";
 import GetAllOrganizations from "./Components/Screens/Organization/GetAllOrganizations/GetAllOrganizations";
 import CreateOrganization from "./Components/Screens/Organization/CreateOrganization/CreateOrganization";
 import ForgotPassword from "./Components/Screens/Login/ForgotPassword";
+import CreateOrganizationSetting from "./Components/Screens/Organization/CreateOrganizationSetting/CreateOrganizationSetting";
+import GetAllSettings from "./Components/Screens/Organization/GetAllSettings/GetAllSettings";
 
 const appRouter = createBrowserRouter([
   {
@@ -132,6 +134,14 @@ const appRouter = createBrowserRouter([
           {
             path: AppRoutes.GET_ALL_ORGANIZATIONS,
             element: <GetAllOrganizations />,
+          },
+          {
+            path: `${AppRoutes.CREATE_ORGANIZATION_SETTINGS}`,
+            element: <CreateOrganizationSetting />,
+          },
+          {
+            path: AppRoutes.GET_ALL_ORGANIZATIONS_SETTINGS,
+            element: <GetAllSettings />,
           },
         ],
       },

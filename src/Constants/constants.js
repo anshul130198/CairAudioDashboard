@@ -29,8 +29,9 @@ export const AppRoutes = {
   ALL_TEAMS: "all-teams",
   GET_ALL_ORGANIZATIONS: "all-organizations",
   CREATE_ORGANIZATION: "create-organization",
-  EDIT_ORGANIZATION: "edit-organization"
-
+  EDIT_ORGANIZATION: "edit-organization",
+  CREATE_ORGANIZATION_SETTINGS: "create-organization-setting",
+  GET_ALL_ORGANIZATIONS_SETTINGS: "all-organizations-setting",
 };
 
 export const SERVER_URL = 'http://127.0.0.1:8000/';
@@ -51,4 +52,5 @@ export const API_ROUTES = {
   ORGANIZATION: 'organization',
   CREATE_ORGANIZATION: 'organization/create',
   GET_ORGANIZATIONS_LIST: 'organization/organization-list',
+  GET_ORGANIZATIONS_SETTINGS_LIST:'/organization/settings/list/',
 };

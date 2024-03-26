@@ -112,7 +112,7 @@ Order status or get some Help using Nifty.</p>*/}
                         className="form-control"
                         placeholder="Enter title"
                       /> */}
-                      <InputField
+                      {/* <InputField
                         type="email"
                         key={"empId"}
                         onChange={(val)=> {
@@ -125,7 +125,7 @@ Order status or get some Help using Nifty.</p>*/}
                         //   inputOverrideClassName={classes.inputOverride}
                         //   overrideErrorClassName={classes.overrideErrorClass}
                         //   containerOverrideClassName={classes.inputContainer}
-                      />
+                      /> */}
                     </div>
                     <div className="form-group">
                       <label>Compute</label>
