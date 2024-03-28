@@ -4,11 +4,13 @@ import { apiCall } from '../../../../utils/apiCall';
 import { useNavigate } from 'react-router-dom';
 import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
 import { Tooltip } from 'react-tooltip'
+import { useSelector } from 'react-redux';
 
 const GetAllSettings = () => {
 
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
+  const { setting, loading, error } = useSelector((state) => state?.organization);
   const columns = [
     { Header: 'Url', accessor: 'url' },
     { Header: 'Disk size', accessor: 'disk' },
@@ -29,19 +31,19 @@ const GetAllSettings = () => {
     </div>,
   }));
 
-  const fetchData = async () => {
-    try {
-      const data = await apiCall({
-        endpoint: API_ROUTES.GET_ORGANIZATIONS_SETTINGS_LIST,
-        method: API_METHODS.GET,
-      });
-      console.log('Data received:', data);
-      setTableData(data);
+  // const fetchData = async () => {
+  //   try {
+  //     const data = await apiCall({
+  //       endpoint: API_ROUTES.GET_ORGANIZATIONS_SETTINGS_LIST,
+  //       method: API_METHODS.GET,
+  //     });
+  //     console.log('Data received:', data);
+  //     setTableData(data);
 
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // };
 
   const editOrganization = async (id, row) => {
     navigate(`../${AppRoutes.EDIT_SETTING}/${id}`);
@@ -57,7 +59,7 @@ const GetAllSettings = () => {
         method: 'DELETE',
       });
       console.log('After Delete received:', data);
-      fetchData();
+      // fetchData();
 
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -65,8 +67,13 @@ const GetAllSettings = () => {
   }
 
   useEffect(() => {
-    fetchData();
-  }, [])
+    // fetchData();
+    console.log('useEffect called', setting)
+    if (setting) {
+      console.log('useEffect', setting, loading, error)
+      setTableData(setting);
+    }
+  }, [setting])
 
   return (
     <div className="content-wrapper">

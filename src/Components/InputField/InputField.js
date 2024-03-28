@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputField = ({ label, type, placeholder, defaultValue,readOnly, onChange, error,className,name,register }) => {
+const InputField = ({ label, type, placeholder, value,readOnly, onChange, error,className,name,register }) => {
   return (
      <>
        <input
@@ -8,7 +8,6 @@ const InputField = ({ label, type, placeholder, defaultValue,readOnly, onChange,
         className={className}
         placeholder={placeholder}
         {...register(name)}
-        defaultValue={defaultValue}
         name={name}
         id={name}
         readOnly={readOnly}

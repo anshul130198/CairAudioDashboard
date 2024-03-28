@@ -60,6 +60,11 @@ const CreateOrganizationSetting = () => {
             console.log(response)
             if(response && response.status=="success") {
                 setInitialOrgData(response?.OrganizationSetting);
+                Object.keys(response).forEach(key => {
+                    if (key in response) {
+                      setValue(key, response[key]);
+                    }
+                  });
             }
         }
         if(param?.id) {
@@ -167,7 +172,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Enter Data in mb"
                                                 register={register}
                                                 error={errors.data_limit_mb}
-                                                defaultValue={initialOrgData?.data_limit_mb}
+                                                // defaultValue={initialOrgData?.data_limit_mb}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.name && <span className="text-danger">{errors.data_limit_mb.message}</span>}
@@ -182,7 +187,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Enter Url"
                                                 register={register}
                                                 error={errors.api_url}
-                                                defaultValue={initialOrgData?.api_url}
+                                                // defaultValue={initialOrgData?.api_url}
                                                 readOnly={!isEdit && param?.id}
                                             />
 
@@ -197,7 +202,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Enter Maximum datasets"
                                                 register={register}
                                                 error={errors.max_datasets}
-                                                defaultValue={initialOrgData?.max_datasets}
+                                                // defaultValue={initialOrgData?.max_datasets}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.max_datasets && <span className="text-danger">{errors.max_datasets.message}</span>}
@@ -212,7 +217,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Maximum Projects"
                                                 register={register}
                                                 error={errors.max_projects}
-                                                defaultValue={initialOrgData?.max_projects}
+                                                // defaultValue={initialOrgData?.max_projects}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {/* <input
@@ -233,7 +238,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Max notebook duration"
                                                 register={register}
                                                 error={errors.max_notebook_duration}
-                                                defaultValue={initialOrgData?.max_notebook_duration}
+                                                // defaultValue={initialOrgData?.max_notebook_duration}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.max_notebook_duration && <span className="text-danger">{errors.max_notebook_duration.message}</span>}
@@ -247,7 +252,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Max notebook duration"
                                                 register={register}
                                                 error={errors.max_experiment_duration}
-                                                defaultValue={initialOrgData?.max_experiment_duration}
+                                                // defaultValue={initialOrgData?.max_experiment_duration}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.max_experiment_duration && <span className="text-danger">{errors.max_experiment_duration.message}</span>}
@@ -261,7 +266,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Max notebook duration"
                                                 register={register}
                                                 error={errors.max_deploy_duration}
-                                                defaultValue={initialOrgData?.max_deploy_duration}
+                                                // defaultValue={initialOrgData?.max_deploy_duration}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.max_deploy_duration && <span className="text-danger">{errors.max_deploy_duration.message}</span>}
@@ -276,7 +281,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Data Scientist Max Amount"
                                                 register={register}
                                                 error={errors.data_scientist_max_amount}
-                                                defaultValue={initialOrgData?.data_scientist_max_amount}
+                                                // defaultValue={initialOrgData?.data_scientist_max_amount}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.data_scientist_max_amount && <span className="text-danger">{errors.data_scientist_max_amount.message}</span>}
@@ -293,7 +298,7 @@ const CreateOrganizationSetting = () => {
                                                     { label: "True", value: "true" },
                                                     { label: "False", value: "false" }
                                                 ]}
-                                                defaultValue="true"
+                                                // defaultValue="true"
                                             />
 
                                             {/* <label> restart if stuck</label>
@@ -317,7 +322,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Restart After Minutes"
                                                 register={register}
                                                 error={errors.restart_after_minutes}
-                                                defaultValue={initialOrgData?.restart_after_minutes}
+                                                // defaultValue={initialOrgData?.restart_after_minutes}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.restart_after_minutes && <span className="text-danger">{errors.restart_after_minutes.message}</span>}
@@ -332,7 +337,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Debug time"
                                                 register={register}
                                                 error={errors.debug_time}
-                                                defaultValue={initialOrgData?.debug_time}
+                                                // defaultValue={initialOrgData?.debug_time}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.debug_time && <span className="text-danger">{errors.debug_time.message}</span>}
@@ -347,7 +352,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Max Endpoint Duration"
                                                 register={register}
                                                 error={errors.max_endpoint_duration}
-                                                defaultValue={initialOrgData?.max_endpoint_duration}
+                                                // defaultValue={initialOrgData?.max_endpoint_duration}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.max_endpoint_duration && <span className="text-danger">{errors.max_endpoint_duration.message}</span>}
@@ -362,7 +367,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="max webapp duration"
                                                 register={register}
                                                 error={errors.max_webapp_duration}
-                                                defaultValue={initialOrgData?.max_webapp_duration}
+                                                // defaultValue={initialOrgData?.max_webapp_duration}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.max_webapp_duration && <span className="text-danger">{errors.max_webapp_duration.message}</span>}
@@ -378,7 +383,7 @@ const CreateOrganizationSetting = () => {
                                                     { label: "True", value: "true" },
                                                     { label: "False", value: "false" }
                                                 ]}
-                                                defaultValue="true"
+                                                // defaultValue="true"
                                             />
                                         </div>
 
@@ -391,7 +396,7 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="max templated eploy time"
                                                 register={register}
                                                 error={errors.max_template_deploy_time}
-                                                defaultValue={initialOrgData?.max_template_deploy_time}
+                                                // defaultValue={initialOrgData?.max_template_deploy_time}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.max_template_deploy_time && <span className="text-danger">{errors.max_template_deploy_time.message}</span>}
@@ -428,7 +433,7 @@ const CreateOrganizationSetting = () => {
                                                 register={register}
                                                 error={errors.idle_time}
                                                 readOnly={!isEdit && param?.id}
-                                                defaultValue={initialOrgData?.idle_time}
+                                                // defaultValue={initialOrgData?.idle_time}
                                             />
                                             {errors.idle_time && <span className="text-danger">{errors.idle_time.message}</span>}
                                         </div>
@@ -443,7 +448,7 @@ const CreateOrganizationSetting = () => {
                                                     { label: "True", value: "true" },
                                                     { label: "False", value: "false" }
                                                 ]}
-                                                defaultValue="true"
+                                                // defaultValue="true"
                                             />
                                         </div>
                                         <div className="form-group">
@@ -455,14 +460,14 @@ const CreateOrganizationSetting = () => {
                                                 placeholder="Organization"
                                                 register={register}
                                                 error={errors.organization}
-                                                defaultValue={initialOrgData?.organization}
+                                                // defaultValue={initialOrgData?.organization}
                                                 readOnly={!isEdit && param?.id}
                                             />
                                             {errors.organization && <span className="text-danger">{errors.organization.message}</span>}
                                         </div>
 
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-block btn-success">{param?.id ? 'Save' : 'Create'}</button>
+                                            <button type="submit" disabled={!isEdit && param?.id} className="btn btn-block btn-success">{param?.id ? 'Save' : 'Create'}</button>
                                         </div>
                                     </form>
                                 </div>

@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
 import { Tooltip } from 'react-tooltip'
 import './index.scss'
+import { useSelector } from 'react-redux';
 
 const GetAllOrganizations = () => {
 
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
+  const { organizations, loading, error } = useSelector((state) => state?.organization);
   const columns = [
     { Header: 'Organization Name', accessor: 'name' },
     { Header: 'Organization Email', accessor: 'email' },
@@ -20,8 +22,9 @@ const GetAllOrganizations = () => {
   const data = tableData.map((row, index) => ({
     ...row,
     actions: <div className='actions'>
-      <a className="fa fa-pencil-alt" onClick={() => editOrganization(row.id, row)}  data-tooltip-id="my-tooltip" data-tooltip-content="Edit"/>
-      <a className="fa fa-trash" onClick={() => deleteData(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete"/>
+      <a className="fa fa-eye" onClick={() => viewOrganization(row?.id, row)} data-tooltip-id="my-tooltip" data-tooltip-content="View" />
+      <a className="fa fa-pencil-alt" onClick={() => editOrganization(row.id, row)} data-tooltip-id="my-tooltip" data-tooltip-content="Edit" />
+      <a className="fa fa-trash" onClick={() => deleteData(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete" />
     </div>,
   }));
 
@@ -39,10 +42,15 @@ const GetAllOrganizations = () => {
     }
   };
 
+
+  const viewOrganization = async (id, row) => {
+    navigate(`../${AppRoutes.VIEW_ORGANIZATION}/${id}`)
+  }
+
   const editOrganization = async (id, row) => {
     navigate(`../${AppRoutes.EDIT_ORGANIZATION}/${id}`);
 
-    }
+  }
   const deleteData = async (id) => {
     try {
       const data = await apiCall({
@@ -58,8 +66,12 @@ const GetAllOrganizations = () => {
   }
 
   useEffect(() => {
-    fetchData();
-  }, [])
+    // fetchData();
+    if (organizations) {
+      console.log('useEffect', organizations, loading, error)
+      setTableData(organizations);
+    }
+  }, [organizations])
 
   return (
     <div className="content-wrapper">

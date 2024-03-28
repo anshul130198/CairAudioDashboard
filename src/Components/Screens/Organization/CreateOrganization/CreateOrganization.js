@@ -19,19 +19,19 @@ const schema = yup.object().shape({
 });
 
 const CreateOrganization = () => {
-  const { register,reset, handleSubmit, formState: { errors }, setValue } = useForm({
+  const { register, reset, handleSubmit, formState: { errors }, setValue } = useForm({
     resolver: yupResolver(schema),
   });
   const [initialOrgData, setInitialOrgData] = useState({});
+  const [isEdit, setIsEdit] = useState(window?.location?.pathname.includes('edit'))
   const param = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-   reset();
+    reset();
     if (param?.id) {
       const fetchOrganization = async () => {
         try {
-          // const response = await API.getOrganization(param.id);
           const response = await apiCall({
             endpoint: `${API_ROUTES.ORGANIZATION}/${param.id}/`,
             method: API_METHODS.GET
@@ -45,7 +45,6 @@ const CreateOrganization = () => {
           });
         } catch (error) {
           console.error('Error fetching organization:', error);
-          // Handle error
         }
       };
 
@@ -59,7 +58,7 @@ const CreateOrganization = () => {
     if (organizationId) {
       const changedFields = Object.keys(data).filter(key => data[key] !== initialOrgData[key]);
       const changedData = Object.fromEntries(changedFields.map(key => [key, data[key]]));
-      console.log(changedFields,"changedFields",">>>>>>>>>>>>>>>","changedData",changedData);
+      console.log(changedFields, "changedFields", ">>>>>>>>>>>>>>>", "changedData", changedData);
       const response = await apiCall({
         endpoint: `${API_ROUTES.ORGANIZATION}/${organizationId}/edit`,
         method: API_METHODS.PUT,
@@ -70,20 +69,16 @@ const CreateOrganization = () => {
       if (response && response.id) {
         // e.target.reset();
         navigate(`../${AppRoutes.GET_ALL_ORGANIZATIONS}`);
-
-        // toast.success('Organization updated successfully');
       }
     } else {
       try {
-        // const response = await API.createOrganization(data);
         const response = await apiCall({
           endpoint: API_ROUTES.CREATE_ORGANIZATION,
           method: 'POST',
           data
         });
         console.log("Response", response);
-        if(response && response.id) {
-          // toast.success('organization created successfully');
+        if (response && response.id) {
           e.target.reset();
         }
 
@@ -116,25 +111,10 @@ const CreateOrganization = () => {
             <div className="mb-4 offset-xl-3 col-xl-5">
               <div className="card minh445">
                 <div className="card-body">
-                  <h4 className="text-center">{param?.id ? 'Edit Organization' : 'Create New Organization'}<br /><br /></h4>
+                  <h4 className="text-center">{!isEdit && param?.id ? 'View Organization' : param?.id ? 'Edit Organization' : 'Create New Organization'}<br /><br /></h4>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                       <label htmlFor="organizationName">Organization Name</label>
-                      {/* <input
-                        type="text"
-                        className="form-control"
-                        id="organizationName"
-                        placeholder="Enter Organization Name"
-                        {...register("name")}
-                      /> */}
-                      {errors.name && <span className="text-danger">{errors.name.message}</span>}
-                      {/* <InputField
-                        type="text"
-                        className="form-control"
-                        id="organizationName"
-                        placeholder="Enter Organization Name"
-                        {...register("name")} 
-                      /> */}
                       <InputField
                         type="text"
                         className="form-control"
@@ -142,9 +122,9 @@ const CreateOrganization = () => {
                         placeholder="Enter Organization Name"
                         register={register}
                         error={errors.name}
+                        readOnly={!isEdit && param?.id}
                       />
-
-                      {/* {errors.name &&  <ErrorText errorText={errors.name.message}/>} */}
+                      {errors.name && <span className="text-danger">{errors.name.message}</span>}
                     </div>
                     <div className="form-group">
                       <label htmlFor="organizationSlug">Organization Slug</label>
@@ -155,8 +135,8 @@ const CreateOrganization = () => {
                         placeholder="Enter Organization Slug"
                         register={register}
                         error={errors.slug}
+                        readOnly={!isEdit && param?.id}
                       />
-
                       {errors.slug && <span className="text-danger">{errors.slug.message}</span>}
                     </div>
                     <div className="form-group">
@@ -168,14 +148,8 @@ const CreateOrganization = () => {
                         placeholder="Enter Organization Email"
                         register={register}
                         error={errors.email}
+                        readOnly={!isEdit && param?.id}
                       />
-                      {/* <input
-                        type="text"
-                        className="form-control"
-                        id="organizationEmail"
-                        placeholder="Enter Organization Email"
-                        {...register("email")}
-                      /> */}
                       {errors.email && <span className="text-danger">{errors.email.message}</span>}
                     </div>
                     <div className="form-group">
@@ -187,37 +161,25 @@ const CreateOrganization = () => {
                         placeholder="Enter Billing Email"
                         register={register}
                         error={errors.billing_email}
+                        readOnly={!isEdit && param?.id}
                       />
-                      {/* <input
-                        type="text"
-                        className="form-control"
-                        id="organizationBillingEmail"
-                        placeholder="Enter Organization Billing Email"
-                        {...register("billing_email")}
-                      /> */}
                       {errors.billing_email && <span className="text-danger">{errors.billing_email.message}</span>}
                     </div>
                     <div className="form-group">
                       <label htmlFor="description">Description</label>
-                      {/* <input
-                        type="text"
-                        className="form-control"
-                        id="description"
-                        placeholder="Enter Description"
-                        {...register("description")}
-                      /> */}
-                        <InputField
+                      <InputField
                         type="text"
                         className="form-control"
                         name="description"
                         placeholder="Enter Description"
                         register={register}
                         error={errors.description}
+                        readOnly={!isEdit && param?.id}
                       />
                       {errors.description && <span className="text-danger">{errors.description.message}</span>}
                     </div>
                     <div className="form-group">
-                      <button type="submit" className="btn btn-block btn-success">{param?.id ? 'Save' : 'Create'}</button>
+                      <button type="submit" disabled={!isEdit && param?.id} className="btn btn-block btn-success">{param?.id ? 'Save' : 'Create'}</button>
                     </div>
                   </form>
                 </div>
