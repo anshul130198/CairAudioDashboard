@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, onClose, onContinue, children }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {

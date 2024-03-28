@@ -5,12 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import { API_METHODS, API_ROUTES, AppRoutes } from '../../../../Constants/constants';
 import { Tooltip } from 'react-tooltip'
 import './index.scss'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Modal from '../../../Modals/Modal';
+import Confirmation from '../../../Modals/Confirmation';
+import { getAllData } from '../../../../store/organizationSlice';
 
 const GetAllOrganizations = () => {
 
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
+  const dispatch = useDispatch();
   const { organizations, loading, error } = useSelector((state) => state?.organization);
   const columns = [
     { Header: 'Organization Name', accessor: 'name' },
@@ -24,7 +30,8 @@ const GetAllOrganizations = () => {
     actions: <div className='actions'>
       <a className="fa fa-eye" onClick={() => viewOrganization(row?.id, row)} data-tooltip-id="my-tooltip" data-tooltip-content="View" />
       <a className="fa fa-pencil-alt" onClick={() => editOrganization(row.id, row)} data-tooltip-id="my-tooltip" data-tooltip-content="Edit" />
-      <a className="fa fa-trash" onClick={() => deleteData(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete" />
+      {/* <a className="fa fa-trash" onClick={() => deleteData(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete" /> */}
+      <a className="fa fa-trash" onClick={() => deletePopUp(row.id)} data-tooltip-id="my-tooltip" data-tooltip-content="Delete" />
     </div>,
   }));
 
@@ -51,14 +58,27 @@ const GetAllOrganizations = () => {
     navigate(`../${AppRoutes.EDIT_ORGANIZATION}/${id}`);
 
   }
-  const deleteData = async (id) => {
+
+  const deletePopUp = (id) => {
+    setSelectedRow(id);
+    setIsModalOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedRow(null);
+  };
+
+  const deleteData = async () => {
     try {
       const data = await apiCall({
-        endpoint: `${API_ROUTES.ORGANIZATION}/${id}/delete`,
+        endpoint: `${API_ROUTES.ORGANIZATION}/${selectedRow}/delete`,
         method: 'DELETE',
       });
       console.log('After Delete received:', data);
-      fetchData();
+      // fetchData();
+      closeModal();
+      dispatch(getAllData())
 
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -76,6 +96,11 @@ const GetAllOrganizations = () => {
   return (
     <div className="content-wrapper">
       {/* Content Header (Page header) */}
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <Confirmation onClose={closeModal} onContinue={deleteData} />
+        </Modal>
+      )}
       <div className="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
